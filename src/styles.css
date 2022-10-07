@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    color: white;
+    font-family: 'K2D', sans-serif;
+}
+
+input {
+    background-color: #000c28;
+}
+
+
+/* ------------------------------------------------Pokedex general CSS */
+.pokedex {
+    display: flex;
+
+}
+
+.pokedex-title{
+    margin-bottom: 15px;
+}
+
+.pokedex-left {
+    background-color: #dc0a2d;
+    padding: 15px;
+}
+
+.pokedex-right {
+    background-color: #5a0b18;
+
+    padding: 15px;
+}
+
+
+/* ------------------------------------------------Pokedex Main CSS */
+.poke-name-catcher {
+    margin-bottom: 15px;
+
+}
+
+.poke-imagens-flexer {
+    display: flex;
+}
+
+
+/* ------------------------------------------------Pokestatus CSS */
+.poke-status-main{
+    margin-top: 15px;
+
+}
+.poke-status-row {
+    margin-top: 15px;
+
+    display: flex;
+    grid-template-columns: auto auto auto;
+}
+
+.poke-status-division {
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    width: -webkit-fill-available;
+   
+}
+.poke-status-item{
+    margin-top: 15px;
+}
+
+.poke-moves{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-top: 15px;
+}
+
+
+/* ------------------------------------------------Base de pokemons CSS */
+.allpoke-base {
+    display: flex;
+}
+
+.allpoke-base-name {
+    margin-right: 15px;
+}
+
+.allpoke-base-id {
+    padding-right: 20px;
+}
+
+.tituloNome1,
+.tituloId1 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.allpoke-base-flexer {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+}
+
+.allpoke-base-img {
+    display: grid;
+}
+
+.allpokebasemodify {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.allpokebasemodify {
+    object-fit: none;
+    width: 75px;
+    height: 75px;
+}
