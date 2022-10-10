@@ -29,7 +29,7 @@
                 <input type="text" class="poke-id-catcher" value="1">
                 <input type="button" onclick="pokeid();" value="busque pelo ID do seu Pokemon">
 
-                <div class="poke-imagens-flexer">
+                <div class="poke-imagens-flexer poke-imagens-margin">
                     <div class="poke-imagens-macho"></div>
                     <div class="poke-imagens-femea"></div>
                 </div>
@@ -126,7 +126,9 @@
                         var namesLenght = Object.keys(names002).length;
                         var QueryPokeNames = document.querySelector('.poke-name-catcher').value;
                         var pid = 1;
-                        console.log(QueryPokeNames);
+                        // regexName = 0;
+                        // console.log(QueryPokeNames);
+                        
                         var none = 0;
 
                         for (i = 0; i < namesLenght; i++) {
@@ -178,8 +180,9 @@
                         var QueryPokenome = document.querySelector('.poke-nome');
                         var QueryPokenames = document.querySelector('.poke-name-catcher');
                         QueryPokenome.innerHTML = "";
-                        console.log(QueryPokenames);
+                        
 
+                       
 
                         QueryPokenome.innerHTML += `<p class = "tituloNome"> ` + json.name;
                         QueryPokenames.value = json.name;
@@ -257,7 +260,7 @@
                                 `" alt= "" class = "tituloImagens">`;
                             if (json.sprites.front_female != null) {
                                 QueryPokeImagensFemale.innerHTML += ` <i class="gender-icon female-icon fa fa-venus" aria-hidden="true"></i>`;
-                                                        }
+                            }
                             QueryPokeImagensFemale.innerHTML += `<img src="` + json.sprites.front_female +
                                 `" alt= "" class = "tituloImagens">`;
                             QueryPokeImagensFemale.innerHTML += `<img src="` + json.sprites.back_female +
@@ -279,9 +282,29 @@
                         function statusInput() {
 
 
+                            //Var para chamar o nome do status json.stats[i].stat.name  
+
                             for (i = 0; i < statusLenght; i++) {
-                                QueryPokeStatus.innerHTML += `<p class = "tituloStatus">` + json.stats[i]
-                                    .stat.name + ` : ` + json.stats[i].base_stat + `</p>`;
+                                var statNameNun = ""
+                                if (i == 0) {
+                                    statNameNun = "Vida"
+                                } else if (i == 1) {
+                                    statNameNun = "Ataque"
+
+                                } else if (i == 2) {
+                                    statNameNun = "Defesa"
+
+                                } else if (i == 3) {
+                                    statNameNun = "Ataque Especial"
+
+                                } else if (i == 4) {
+                                    statNameNun = "Defesa Especial"
+
+                                } else if (i == 5) {
+                                    statNameNun = "Velocidade"
+
+                                };
+                                QueryPokeStatus.innerHTML += `<p class = "tituloStatus">` + statNameNun + ` : ` + json.stats[i].base_stat + `</p>`;
                             };
 
                             `.`

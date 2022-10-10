@@ -39,8 +39,12 @@ input {
 
 .poke-imagens-flexer {
     display: flex;
+    
+}
+.poke-imagens-margin{
     margin-top: 15px;
 }
+
 .gender-icon{
     
 display: block!important;
@@ -79,7 +83,6 @@ color: #0096fd;
 .poke-status-item{
     margin-top: 15px;
 }
-
 .poke-moves{
     display: grid;
     grid-template-columns: auto auto auto;
