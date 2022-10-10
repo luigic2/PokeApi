@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="fontawesome/font-awesome-4.7.0/css/font-awesome.min.css">
     </head>
 
 
@@ -19,7 +20,7 @@
             <h1 class="pokedex-title">Pokedex</h1>
             <div class="">
 
-               
+
 
                 <div class="">
                     <input type="text" class="poke-name-catcher">
@@ -28,7 +29,10 @@
                 <input type="text" class="poke-id-catcher" value="1">
                 <input type="button" onclick="pokeid();" value="busque pelo ID do seu Pokemon">
 
-                <div class="poke-imagens"></div>
+                <div class="poke-imagens-flexer">
+                    <div class="poke-imagens-macho"></div>
+                    <div class="poke-imagens-femea"></div>
+                </div>
 
 
 
@@ -61,46 +65,46 @@
                     </div>
                     <div class="poke-status-division">
                         <div class="poke-status-item">
-                        <h3>Habilidades</h3>
-                        <p class="poke-habilidades"></p>
+                            <h3>Habilidades</h3>
+                            <p class="poke-habilidades"></p>
+                        </div>
                     </div>
+                    <div class="poke-status-division">
+                        <div class="poke-status-item">
+                            <h3>Move-set</h3>
+                            <p class="poke-moves"></p>
+                        </div>
+
+                    </div>
+                </section>
             </div>
-            <div class="poke-status-division">
-                <div class="poke-status-item">
-                <h3>Move-set</h3>
-                <p class="poke-moves"></p>
-            </div>
-
-        </div>
-        </section>
-    </div>
-
-
-    </div>
-
-
-
-
-    <div class="pokedex-right">
-        <h2>Base de Pokemons</h2>
-        <div>
-            <input type="button" onclick="pokebase()" value="Veja a Database de Pokemons!">
-            <input type="button" onclick="pokebaseremove()" value="-">
-            <input type="button" onclick="pokebaseadd()" value="+">
-            <input type="button" onclick="pokebaseclean()" value="Limpar">
 
 
         </div>
-        <div class="allpoke-base">
-            <div class="allpoke-base-name">
-            </div>
-            <div class="allpoke-base-id">
-            </div>
-            <div class="allpoke-base-img">
-            </div>
-        </div>
 
-    </div>
+
+
+
+        <div class="pokedex-right">
+            <h2>Base de Pokemons</h2>
+            <div>
+                <input type="button" onclick="pokebase()" value="Veja a Database de Pokemons!">
+                <input type="button" onclick="pokebaseremove()" value="-">
+                <input type="button" onclick="pokebaseadd()" value="+">
+                <input type="button" onclick="pokebaseclean()" value="Limpar">
+
+
+            </div>
+            <div class="allpoke-base">
+                <div class="allpoke-base-name">
+                </div>
+                <div class="allpoke-base-id">
+                </div>
+                <div class="allpoke-base-img">
+                </div>
+            </div>
+
+        </div>
     </div>
     <div class="">
         <script>
@@ -191,8 +195,11 @@
                         var imagens001 = json.forms;
                         var imagens002 = Object.keys(imagens001);
                         var imagensLenght = Object.keys(imagens002).length;
-                        var QueryPokeImagens = document.querySelector('.poke-imagens');
-                        QueryPokeImagens.innerHTML = "";
+                        var QueryPokeImagensMale = document.querySelector('.poke-imagens-macho');
+                        QueryPokeImagensMale.innerHTML = "";
+                        var QueryPokeImagensFemale = document.querySelector('.poke-imagens-femea');
+                        QueryPokeImagensFemale.innerHTML = "";
+
 
                         //Variaveis das Status do Pokemon
                         var status001 = json.stats;
@@ -228,40 +235,39 @@
 
                         // console.log(Object.keys(habilidadesLenght).length);
 
-                        
+
 
                         //Função que imprime todas as imagens do Pokemon
                         function imagensInput() {
+                            if (json.sprites.front_female != null) {
+                                QueryPokeImagensMale.innerHTML += `<i class="gender-icon male-icon fa fa-mars" aria-hidden="true"></i>`;
+                            } else {
+                                QueryPokeImagensMale.innerHTML += `<i class="gender-icon male-n-female-icon fa fa-venus-mars" aria-hidden="true"></i>`;
 
+                            }
+                            QueryPokeImagensMale.innerHTML += `<img src="` + json.sprites.front_default +
+                                `" alt= "" class = "tituloImagens">`;
+                            QueryPokeImagensMale.innerHTML += `<img src="` + json.sprites.back_default +
+                                `" alt= "" class = "tituloImagens">`;
 
-                            QueryPokeImagens.innerHTML += `<div class ="poke-imagens-flexer">`;
-                            QueryPokeImagens.innerHTML += `<img src="` + json.sprites.front_default +
+                            QueryPokeImagensMale.innerHTML += `<div class="poke-imagens-flexer">`;
+                            QueryPokeImagensMale.innerHTML += `<img src="` + json.sprites.front_shiny +
                                 `" alt= "" class = "tituloImagens">`;
-                            QueryPokeImagens.innerHTML += `<img src="` + json.sprites.back_default +
+                            QueryPokeImagensMale.innerHTML += `<img src="` + json.sprites.back_shiny +
                                 `" alt= "" class = "tituloImagens">`;
-                            QueryPokeImagens.innerHTML += `<div/>`;
+                            if (json.sprites.front_female != null) {
+                                QueryPokeImagensFemale.innerHTML += ` <i class="gender-icon female-icon fa fa-venus" aria-hidden="true"></i>`;
+                                                        }
+                            QueryPokeImagensFemale.innerHTML += `<img src="` + json.sprites.front_female +
+                                `" alt= "" class = "tituloImagens">`;
+                            QueryPokeImagensFemale.innerHTML += `<img src="` + json.sprites.back_female +
+                                `" alt= "" class = "tituloImagens">`;
+                            QueryPokeImagensFemale.innerHTML += `<div/>`;
 
-                            QueryPokeImagens.innerHTML += `<div class="poke-imagens-flexer">`;
-                            QueryPokeImagens.innerHTML += `<img src="` + json.sprites.front_shiny +
+                            QueryPokeImagensFemale.innerHTML += `<img src="` + json.sprites.front_shiny_female +
                                 `" alt= "" class = "tituloImagens">`;
-                            QueryPokeImagens.innerHTML += `<img src="` + json.sprites.back_shiny +
+                            QueryPokeImagensFemale.innerHTML += `<img src="` + json.sprites.back_shiny_female +
                                 `" alt= "" class = "tituloImagens">`;
-                            QueryPokeImagens.innerHTML += `<div/>`;
-
-                            QueryPokeImagens.innerHTML += `<div class="poke-imagens-flexer">`;
-                            QueryPokeImagens.innerHTML += `<img src="` + json.sprites.front_female +
-                                `" alt= "" class = "tituloImagens">`;
-                            QueryPokeImagens.innerHTML += `<img src="` + json.sprites.back_female +
-                                `" alt= "" class = "tituloImagens">`;
-                            QueryPokeImagens.innerHTML += `<div/>`;
-
-                            QueryPokeImagens.innerHTML += `<div class="poke-imagens-flexer">`;
-                            QueryPokeImagens.innerHTML += `<img src="` + json.sprites.front_shiny_female +
-                                `" alt= "" class = "tituloImagens">`;
-                            QueryPokeImagens.innerHTML += `<img src="` + json.sprites.back_shiny_female +
-                                `" alt= "" class = "tituloImagens">`;
-                            QueryPokeImagens.innerHTML += `<div/>`;
-
                             `.`
 
 

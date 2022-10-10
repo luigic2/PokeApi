@@ -39,9 +39,25 @@ input {
 
 .poke-imagens-flexer {
     display: flex;
+    margin-top: 15px;
 }
+.gender-icon{
+    
+display: block!important;
+font-size: 25px!important;
+text-shadow: -1px -1px 0 #ffff, 1px -1px 0 #ffff, -1px 1px 0 #ffff, 1px 1px 0 #ffff;
+}
+.male-icon{
+color: #0096fd;
+}
+.female-icon{
+    color: #ff0097;
 
+}
+.male-n-female-icon{
+    color: #804bca;
 
+}
 /* ------------------------------------------------Pokestatus CSS */
 .poke-status-main{
     margin-top: 15px;
