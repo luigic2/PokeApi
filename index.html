@@ -126,16 +126,15 @@
                         var namesLenght = Object.keys(names002).length;
                         var QueryPokeNames = document.querySelector('.poke-name-catcher').value;
                         var pid = 1;
-                        // regexName = 0;
-                        // console.log(QueryPokeNames);
-                        
+                        regexName = 0;
+                        console.log(QueryPokeNames);
+
                         var none = 0;
 
                         for (i = 0; i < namesLenght; i++) {
                             // console.log(json.results[i].name);
                             // console.log(i);
                             if (json.results[i].name === QueryPokeNames) {
-                                console.log("TAINDO")
                                 pid = +i + 1;
 
                                 var idcatch = document.querySelector('.poke-id-catcher').value = [pid];
@@ -179,20 +178,16 @@
 
                         var QueryPokenome = document.querySelector('.poke-nome');
                         var QueryPokenames = document.querySelector('.poke-name-catcher');
-                        QueryPokenome.innerHTML = "";
-                        
-
                        
-
-                        QueryPokenome.innerHTML += `<p class = "tituloNome"> ` + json.name;
+                        QueryPokenome.innerHTML = `<p class = "tituloNome"> ` + json.name;
                         QueryPokenames.value = json.name;
 
 
                         //Variavel de ID do Pokemon
 
                         var QueryPokeId = document.querySelector('.poke-id');
-                        QueryPokeId.innerHTML = "";
-                        QueryPokeId.innerHTML += `<p class = "tituloid">` + json.id;
+                       
+                        QueryPokeId.innerHTML = `<p class = "tituloid">` + json.id;
 
                         //Variaveis das Imagens do Pokemon
                         var imagens001 = json.forms;
@@ -248,11 +243,14 @@
                                 QueryPokeImagensMale.innerHTML += `<i class="gender-icon male-n-female-icon fa fa-venus-mars" aria-hidden="true"></i>`;
 
                             }
+                            
                             QueryPokeImagensMale.innerHTML += `<img src="` + json.sprites.front_default +
                                 `" alt= "" class = "tituloImagens">`;
                             QueryPokeImagensMale.innerHTML += `<img src="` + json.sprites.back_default +
                                 `" alt= "" class = "tituloImagens">`;
 
+                            QueryPokeImagensMale.innerHTML += `<img src="` + "images/shine.png" +
+                            `" alt= "" class="shine-imagens" id="shine-imagens">`;
                             QueryPokeImagensMale.innerHTML += `<div class="poke-imagens-flexer">`;
                             QueryPokeImagensMale.innerHTML += `<img src="` + json.sprites.front_shiny +
                                 `" alt= "" class = "tituloImagens">`;
@@ -267,6 +265,7 @@
                                 `" alt= "" class = "tituloImagens">`;
                             QueryPokeImagensFemale.innerHTML += `<div/>`;
 
+
                             QueryPokeImagensFemale.innerHTML += `<img src="` + json.sprites.front_shiny_female +
                                 `" alt= "" class = "tituloImagens">`;
                             QueryPokeImagensFemale.innerHTML += `<img src="` + json.sprites.back_shiny_female +
@@ -277,6 +276,7 @@
                         }
                         imagensInput();
 
+                        
 
                         //Função que imprime todas os status do Pokemon
                         function statusInput() {
@@ -359,6 +359,8 @@
                         typesInput();
 
 
+                        
+                        
 
                     })
             };
@@ -412,6 +414,7 @@
                 QueryPokebaseimg.innerHTML = ``;
 
                 async function fetchPoke() {
+                    
                     for (p = (offsetter + 1); p <= (offsetter + 7); p++) {
                         await fetch(`https://pokeapi.co/api/v2/pokemon/${p}`, {
                             method: 'GET'
@@ -436,7 +439,6 @@
 
                             });
                     }
-
                 }
 
                 fetchPoke();

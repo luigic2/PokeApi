@@ -15,7 +15,7 @@ input {
 
 }
 
-.pokedex-title{
+.pokedex-title {
     margin-bottom: 15px;
 }
 
@@ -39,34 +39,52 @@ input {
 
 .poke-imagens-flexer {
     display: flex;
-    
-}
-.poke-imagens-margin{
-    margin-top: 15px;
+
 }
 
-.gender-icon{
-    
-display: block!important;
-font-size: 25px!important;
-text-shadow: -1px -1px 0 #ffff, 1px -1px 0 #ffff, -1px 1px 0 #ffff, 1px 1px 0 #ffff;
+.poke-imagens-margin {
+    margin-top: 15px;
 }
-.male-icon{
-color: #0096fd;
+.disapear{
+    display: none!important;
 }
-.female-icon{
+#shine-imagens {
+
+    display: block;
+    position: absolute;
+    left: 10px;
+    top: 260px;
+    filter: invert(93%) sepia(80%) saturate(359%) hue-rotate(336deg) brightness(105%) contrast(104%);
+    width: 2rem;
+}
+
+.gender-icon {
+
+    display: block !important;
+    font-size: 25px !important;
+    text-shadow: -1px -1px 0 rgb(255, 255, 255), 1px -1px 0 #ffff, -1px 1px 0 #ffff, 1px 1px 0 #ffff;
+}
+
+.male-icon {
+    color: #0096fd;
+}
+
+.female-icon {
     color: #ff0097;
 
 }
-.male-n-female-icon{
+
+.male-n-female-icon {
     color: #804bca;
 
 }
+
 /* ------------------------------------------------Pokestatus CSS */
-.poke-status-main{
+.poke-status-main {
     margin-top: 15px;
 
 }
+
 .poke-status-row {
     margin-top: 15px;
 
@@ -78,12 +96,14 @@ color: #0096fd;
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 15px;
     width: -webkit-fill-available;
-   
+
 }
-.poke-status-item{
+
+.poke-status-item {
     margin-top: 15px;
 }
-.poke-moves{
+
+.poke-moves {
     display: grid;
     grid-template-columns: auto auto auto;
     margin-top: 15px;
