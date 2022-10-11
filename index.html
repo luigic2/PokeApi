@@ -179,10 +179,11 @@
 
                         var QueryPokenome = document.querySelector('.poke-nome');
                         var QueryPokenames = document.querySelector('.poke-name-catcher');
-                       
-                        QueryPokenome.innerHTML = `<p class = "tituloNome"> ` + json.name;
+                        var CapitalizedName = json.name.charAt(0).toUpperCase() + json.name.slice(1);
+
+                        QueryPokenome.innerHTML = `<p class = "tituloNome"> ` + CapitalizedName;
                             
-                        QueryPokenames.value = json.name;
+                        QueryPokenames.value = CapitalizedName;
 
 
                         //Variavel de ID do Pokemon
