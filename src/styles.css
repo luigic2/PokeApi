@@ -2,6 +2,7 @@
     margin: 0;
     color: white;
     font-family: 'K2D', sans-serif;
+
 }
 
 input {
@@ -45,9 +46,11 @@ input {
 .poke-imagens-margin {
     margin-top: 15px;
 }
-.disapear{
-    display: none!important;
+
+.disapear {
+    display: none !important;
 }
+
 #shine-imagens {
 
     display: block;
@@ -90,6 +93,17 @@ input {
 
     display: flex;
     grid-template-columns: auto auto auto;
+}
+
+.poke-tipos{
+    margin-top: 10px;
+}
+.tipo-div{
+    margin-top: 7px;
+}
+.tituloTipos{
+    margin-left: 7px;
+    align-self: center;
 }
 
 .poke-status-division {
@@ -147,4 +161,254 @@ input {
     object-fit: none;
     width: 75px;
     height: 75px;
+}
+
+
+/* ------------------------------------------------ Icons CSS*/
+
+.imgTipos {
+    border-radius: 100%;
+    height: 1.5rem;
+    width: 1.5rem;
+    padding: 2px;
+    transition: 200ms all;
+    align-self: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+}
+
+.imgTipos:hover {
+    filter: saturate(200%);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.imgTipos img {
+    height: 60%;
+    width: 60%;
+    margin: 20%;
+}
+
+.bug {
+    background: #92BC2C;
+    box-shadow: 0 0 20px #92BC2C;
+}
+
+.dark {
+    background: #595761;
+    box-shadow: 0 0 20px #595761;
+}
+
+.dragon {
+    background: #0C69C8;
+    box-shadow: 0 0 20px #0C69C8;
+}
+
+.electric {
+    background: #F2D94E;
+    box-shadow: 0 0 20px #F2D94E;
+}
+
+.fire {
+    background: #FBA54C;
+    box-shadow: 0 0 20px #FBA54C;
+}
+
+.fairy {
+    background: #EE90E6;
+    box-shadow: 0 0 20px #EE90E6;
+}
+
+.fighting {
+    background: #D3425F;
+    box-shadow: 0 0 20px #D3425F;
+}
+
+.flying {
+    background: #A1BBEC;
+    box-shadow: 0 0 20px #A1BBEC;
+}
+
+.ghost {
+    background: #5F6DBC;
+    box-shadow: 0 0 20px #5F6DBC;
+}
+
+.grass {
+    background: #5FBD58;
+    box-shadow: 0 0 20px #5FBD58;
+}
+
+.ground {
+    background: #DA7C4D;
+    box-shadow: 0 0 20px #DA7C4D;
+}
+
+.ice {
+    background: #75D0C1;
+    box-shadow: 0 0 20px #75D0C1;
+}
+
+.normal {
+    background: #A0A29F;
+    box-shadow: 0 0 20px #A0A29F;
+}
+
+.poison {
+    background: #B763CF;
+    box-shadow: 0 0 20px #B763CF;
+}
+
+.psychic {
+    background: #FA8581;
+    box-shadow: 0 0 20px #FA8581;
+}
+
+.rock {
+    background: #C9BB8A;
+    box-shadow: 0 0 20px #C9BB8A;
+}
+
+.steel {
+    background: #5695A3;
+    box-shadow: 0 0 20px #5695A3;
+}
+
+.water {
+    background: #539DDF;
+    box-shadow: 0 0 20px #539DDF;
+}
+
+
+
+
+
+
+.texto-bug {
+    color: #92BC2C;
+    text-shadow: 0 0 20px #92BC2C;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.texto-dark {
+    color: #595761;
+    text-shadow: 0 0 20px #595761;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.texto-dragon {
+    color: #0C69C8;
+    text-shadow: 0 0 20px #0C69C8;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.texto-electric {
+    color: #F2D94E;
+    text-shadow: 0 0 20px #F2D94E;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.texto-fire {
+    color: #FBA54C;
+    text-shadow: 0 0 20px #FBA54C;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.texto-fairy {
+    color: #EE90E6;
+    text-shadow: 0 0 20px #EE90E6;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.texto-fighting {
+    color: #D3425F;
+    text-shadow: 0 0 20px #D3425F;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.texto-flying {
+    color: #A1BBEC;
+    text-shadow: 0 0 20px #A1BBEC;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.texto-ghost {
+    color: #5F6DBC;
+    text-shadow: 0 0 20px #5F6DBC;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.texto-grass {
+    color: #5FBD58;
+    text-shadow: 0 0 20px #5FBD58;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.texto-ground {
+    color: #DA7C4D;
+    text-shadow: 0 0 20px #DA7C4D;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.texto-ice {
+    color: #75D0C1;
+    text-shadow: 0 0 20px #75D0C1;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.texto-normal {
+    color: #A0A29F;
+    text-shadow: 0 0 20px #A0A29F;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.texto-poison {
+    color: #B763CF;
+    text-shadow: 0 0 20px #B763CF;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.texto-psychic {
+    color: #FA8581;
+    text-shadow: 0 0 20px #FA8581;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.texto-rock {
+    color: #C9BB8A;
+    text-shadow: 0 0 20px #C9BB8A;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.texto-steel {
+    color: #5695A3;
+    text-shadow: 0 0 20px #5695A3;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.texto-water {
+    color: #539DDF;
+    text-shadow: 0 0 20px #539DDF;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
