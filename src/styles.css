@@ -30,6 +30,9 @@ input {
 
     padding: 15px;
 }
+.poke-mt-15{
+    margin-top: 15px;
+}
 
 
 /* ------------------------------------------------Pokedex Main CSS */
@@ -38,7 +41,7 @@ input {
 
 }
 
-.poke-imagens-flexer {
+.poke-flexer {
     display: flex;
 
 }
@@ -123,7 +126,13 @@ input {
     margin-top: 15px;
 }
 
+.poke-moves-center{
+    justify-content: center;
+}
 
+.poke-moves-paginas{
+    margin: 0px 10px;
+}
 /* ------------------------------------------------Base de pokemons CSS */
 .allpoke-base {
     display: flex;

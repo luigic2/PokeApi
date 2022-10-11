@@ -12,7 +12,7 @@
         <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="fontawesome/font-awesome-4.7.0/css/font-awesome.min.css">
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-        </head>
+    </head>
 
 
 
@@ -30,7 +30,7 @@
                 <input type="text" class="poke-id-catcher" value="1">
                 <input type="button" onclick="pokeid();" value="busque pelo ID do seu Pokemon">
 
-                <div class="poke-imagens-flexer poke-imagens-margin">
+                <div class="poke-flexer poke-imagens-margin">
                     <div class="poke-imagens-macho"></div>
                     <div class="poke-imagens-femea"></div>
                 </div>
@@ -74,6 +74,13 @@
                         <div class="poke-status-item">
                             <h3>Move-set</h3>
                             <p class="poke-moves"></p>
+
+                            <div class="poke-moves-center poke-mt-15 poke-flexer">
+                                <input id="moves-remove-id" type="button" value="-">
+                                <p class="poke-moves-paginas">1</p>
+                                <input id="moves-add-id" type="button" value="+">
+                            </div>
+
                         </div>
 
                     </div>
@@ -183,14 +190,14 @@
                         var CapitalizedName = json.name.charAt(0).toUpperCase() + json.name.slice(1);
 
                         QueryPokenome.innerHTML = `<p class = "tituloNome"> ` + CapitalizedName;
-                            
+
                         QueryPokenames.value = CapitalizedName;
 
 
                         //Variavel de ID do Pokemon
 
                         var QueryPokeId = document.querySelector('.poke-id');
-                       
+
                         QueryPokeId.innerHTML = `<p class = "tituloid">` + json.id;
 
                         //Variaveis das Imagens do Pokemon
@@ -247,15 +254,15 @@
                                 QueryPokeImagensMale.innerHTML += `<i class="gender-icon male-n-female-icon fa fa-venus-mars" aria-hidden="true"></i>`;
 
                             }
-                            
+
                             QueryPokeImagensMale.innerHTML += `<img src="` + json.sprites.front_default +
                                 `" alt= "" class = "tituloImagens">`;
                             QueryPokeImagensMale.innerHTML += `<img src="` + json.sprites.back_default +
                                 `" alt= "" class = "tituloImagens">`;
 
                             QueryPokeImagensMale.innerHTML += `<img src="` + "images/shine.png" +
-                            `" alt= "" class="shine-imagens" id="shine-imagens">`;
-                            QueryPokeImagensMale.innerHTML += `<div class="poke-imagens-flexer">`;
+                                `" alt= "" class="shine-imagens" id="shine-imagens">`;
+                            QueryPokeImagensMale.innerHTML += `<div class="poke-flexer">`;
                             QueryPokeImagensMale.innerHTML += `<img src="` + json.sprites.front_shiny +
                                 `" alt= "" class = "tituloImagens">`;
                             QueryPokeImagensMale.innerHTML += `<img src="` + json.sprites.back_shiny +
@@ -280,7 +287,7 @@
                         }
                         imagensInput();
 
-                        
+
 
                         //Função que imprime todas os status do Pokemon
                         function statusInput() {
@@ -331,74 +338,108 @@
                             `.`
                         }
                         abilitiesInput();
-
+                        var offsetterMoves = 0;
                         //Função que imprime todas os Moves do Pokemon
                         function movesInput() {
+                            QueryPokeMoves.innerHTML = "";
                             let i = 0;
+                            let pageNumber = 0;
+                            for (i = (offsetterMoves + 1); i <= (offsetterMoves + 18); i++) {
 
-                            for (i = 0; i < movesLenght; i++) {
-                                QueryPokeMoves.innerHTML += `<p class = "tituloMoves">` + json.moves[i].move
-                                    .name;
+                                QueryPokeMoves.innerHTML += `<p class = "tituloMoves">` + json.moves[i].move.name;
                             };
 
                             `.`
-                        }
+                           
+                            
+                            document.querySelector("#moves-add-id").addEventListener("click", ()=>{
+                                pokemovesadd();
+                            });
+
+                            document.querySelector("#moves-remove-id").addEventListener("click", ()=>{
+                                if (offsetterMoves > 0) {
+                                pokemovesremove();
+                                } else{
+                                    console.log("outro");
+                                    movesInput();
+                                }
+                            });
+                        };
+
+                        function pokemovesadd() {
+                                offsetterMoves += 18;
+                                QueryPokeMoves.innerHTML = "";
+                                console.log(offsetterMoves);
+                                movesInput(offsetterMoves);
+                            };
+                           
+
+                        function pokemovesremove() {
+                                QueryPokeMoves.innerHTML = "";
+                                offsetterMoves -= 18;
+                                
+                                console.log(offsetterMoves);
+                                movesInput(offsetterMoves);
+
+
+                            };
+
                         movesInput();
 
 
 
                         function typesInput() {
 
-                          
-                           
-                            
+
+
+
                             for (i = 0; i < tiposLenght; i++) {
                                 const pokeTypeName = json.types[i].type.name;
-                                var icon = 
-                            (pokeTypeName == "normal") ? "images/normal.svg" : 
-                            (pokeTypeName == "fighting") ? "images/fighting.svg" :
-                            (pokeTypeName == "flying") ? "images/flying.svg" :
-                            (pokeTypeName == "poison") ? "images/poison.svg" :
-                            (pokeTypeName == "ground") ? "images/ground.svg" :
-                            (pokeTypeName == "rock") ? "images/rock.svg" :
-                            (pokeTypeName == "bug") ? "images/bug.svg" :
-                            (pokeTypeName == "ghost") ? "images/ghost.svg" :
-                            (pokeTypeName == "steel") ? "images/steel.svg" :
-                            (pokeTypeName == "fire") ? "images/fire.svg" :
-                            (pokeTypeName == "water") ? "images/water.svg" :
-                            (pokeTypeName == "grass") ? "images/grass.svg" :
-                            (pokeTypeName == "electric") ? "images/electric.svg" :
-                            (pokeTypeName == "psychic") ? "images/psychic.svg" :
-                            (pokeTypeName == "ice") ? "images/ice.svg" :
-                            (pokeTypeName == "dragon") ? "images/dragon.svg" :
-                            (pokeTypeName == "dark") ? "images/dark.svg" :
-                            (pokeTypeName == "fairy") ? "images/fairy.svg" :
-                            (pokeTypeName == "unknown") ? "images/unknown.svg" :
-                            (pokeTypeName == "shadow") ? "images/dark.svg" : '';
+                                var icon =
+                                    (pokeTypeName == "normal") ? "images/normal.svg" :
+                                        (pokeTypeName == "fighting") ? "images/fighting.svg" :
+                                            (pokeTypeName == "flying") ? "images/flying.svg" :
+                                                (pokeTypeName == "poison") ? "images/poison.svg" :
+                                                    (pokeTypeName == "ground") ? "images/ground.svg" :
+                                                        (pokeTypeName == "rock") ? "images/rock.svg" :
+                                                            (pokeTypeName == "bug") ? "images/bug.svg" :
+                                                                (pokeTypeName == "ghost") ? "images/ghost.svg" :
+                                                                    (pokeTypeName == "steel") ? "images/steel.svg" :
+                                                                        (pokeTypeName == "fire") ? "images/fire.svg" :
+                                                                            (pokeTypeName == "water") ? "images/water.svg" :
+                                                                                (pokeTypeName == "grass") ? "images/grass.svg" :
+                                                                                    (pokeTypeName == "electric") ? "images/electric.svg" :
+                                                                                        (pokeTypeName == "psychic") ? "images/psychic.svg" :
+                                                                                            (pokeTypeName == "ice") ? "images/ice.svg" :
+                                                                                                (pokeTypeName == "dragon") ? "images/dragon.svg" :
+                                                                                                    (pokeTypeName == "dark") ? "images/dark.svg" :
+                                                                                                        (pokeTypeName == "fairy") ? "images/fairy.svg" :
+                                                                                                            (pokeTypeName == "unknown") ? "images/unknown.svg" :
+                                                                                                                (pokeTypeName == "shadow") ? "images/dark.svg" : '';
 
-                            var pokeTypeNameTranslate = 
-                            (pokeTypeName == "normal") ? "Normal" : 
-                            (pokeTypeName == "fighting") ? "Lutador" :
-                            (pokeTypeName == "flying") ? "Voador" :
-                            (pokeTypeName == "poison") ? "Venenoso" :
-                            (pokeTypeName == "ground") ? "Terrestre" :
-                            (pokeTypeName == "rock") ? "Pedra" :
-                            (pokeTypeName == "bug") ? "Inseto" :
-                            (pokeTypeName == "ghost") ? "Fantasma" :
-                            (pokeTypeName == "steel") ? "Aço" :
-                            (pokeTypeName == "fire") ? "Fogo" :
-                            (pokeTypeName == "water") ? "Água" :
-                            (pokeTypeName == "grass") ? "Grama" :
-                            (pokeTypeName == "electric") ? "Elétrico" :
-                            (pokeTypeName == "psychic") ? "Psíquico" :
-                            (pokeTypeName == "ice") ? "Gelo" :
-                            (pokeTypeName == "dragon") ? "Dragão" :
-                            (pokeTypeName == "dark") ? "Sombrio" :
-                            (pokeTypeName == "fairy") ? "Fada" :
-                            (pokeTypeName == "unknown") ? "Desconhecido" :
-                            (pokeTypeName == "shadow") ? "Sombrio" : '';
-                            console.log(icon);
-                                QueryPokeTipos.innerHTML += `<div class = "poke-imagens-flexer tipo-div">` + `<div class = "imgTipos ` + pokeTypeName +` "><img class = " " src="` + icon + `">` + `</div>` +  `<p class = "tituloTipos texto-` + pokeTypeName +`"> ` + pokeTypeNameTranslate +`</div>`;
+                                var pokeTypeNameTranslate =
+                                    (pokeTypeName == "normal") ? "Normal" :
+                                        (pokeTypeName == "fighting") ? "Lutador" :
+                                            (pokeTypeName == "flying") ? "Voador" :
+                                                (pokeTypeName == "poison") ? "Venenoso" :
+                                                    (pokeTypeName == "ground") ? "Terrestre" :
+                                                        (pokeTypeName == "rock") ? "Pedra" :
+                                                            (pokeTypeName == "bug") ? "Inseto" :
+                                                                (pokeTypeName == "ghost") ? "Fantasma" :
+                                                                    (pokeTypeName == "steel") ? "Aço" :
+                                                                        (pokeTypeName == "fire") ? "Fogo" :
+                                                                            (pokeTypeName == "water") ? "Água" :
+                                                                                (pokeTypeName == "grass") ? "Grama" :
+                                                                                    (pokeTypeName == "electric") ? "Elétrico" :
+                                                                                        (pokeTypeName == "psychic") ? "Psíquico" :
+                                                                                            (pokeTypeName == "ice") ? "Gelo" :
+                                                                                                (pokeTypeName == "dragon") ? "Dragão" :
+                                                                                                    (pokeTypeName == "dark") ? "Sombrio" :
+                                                                                                        (pokeTypeName == "fairy") ? "Fada" :
+                                                                                                            (pokeTypeName == "unknown") ? "Desconhecido" :
+                                                                                                                (pokeTypeName == "shadow") ? "Sombrio" : '';
+                                console.log(icon);
+                                QueryPokeTipos.innerHTML += `<div class = "poke-flexer tipo-div">` + `<div class = "imgTipos ` + pokeTypeName + ` "><img class = " " src="` + icon + `">` + `</div>` + `<p class = "tituloTipos texto-` + pokeTypeName + `"> ` + pokeTypeNameTranslate + `</div>`;
 
 
                             };
@@ -410,8 +451,8 @@
                         typesInput();
 
 
-                        
-                        
+
+
 
                     })
             };
@@ -465,7 +506,7 @@
                 QueryPokebaseimg.innerHTML = ``;
 
                 async function fetchPoke() {
-                    
+
                     for (p = (offsetter + 1); p <= (offsetter + 7); p++) {
                         await fetch(`https://pokeapi.co/api/v2/pokemon/${p}`, {
                             method: 'GET'
