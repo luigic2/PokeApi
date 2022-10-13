@@ -130,7 +130,7 @@ input {
     justify-content: center;
 }
 
-.poke-moves-paginas{
+#poke-moves-paginas{
     margin: 0px 10px;
 }
 /* ------------------------------------------------Base de pokemons CSS */
