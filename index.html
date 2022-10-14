@@ -522,13 +522,18 @@
                                     function pokeapitype2() {
                                     
                                            var foi = typei.some( ai => jsontype2.includes(ai) );
-                                           
-
-                                    
                                            console.log(foi);
 
+                                        for(j = 0; j < typei.length; j++){
+                                            for(h = 0; h < jsontype2.length; h++){
+                                                if(typei[j] == jsontype2[h] ){
+                                                    console.log(jsontype2[h]);
+                                                    console.log(h);
+                                                }
 
-                                           
+                                            }
+                                        }
+
                                     }
 
                                     pokeapitype2()
