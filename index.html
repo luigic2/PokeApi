@@ -66,6 +66,12 @@
                     </div>
                     <div class="poke-status-division">
                         <div class="poke-status-item">
+                            <h3>Efetividades</h3>
+                            <p class="poke-efetividade"></p>
+                        </div>
+                    </div>
+                    <div class="poke-status-division">
+                        <div class="poke-status-item">
                             <h3>Habilidades</h3>
                             <p class="poke-habilidades"></p>
                         </div>
@@ -116,7 +122,7 @@
     </div>
     <div class="">
         <script>
-            console.log("pokemon")
+
             var AllPokeBaseLenght = 0;
             var pb = 0;
 
@@ -127,7 +133,6 @@
                 })
                     .then(response => response.json())
                     .then(function (json) {
-                        console.log(json);
 
                         var names001 = json.results;
                         var names002 = Object.keys(names001);
@@ -136,7 +141,7 @@
                         var pid = 1;
                         const regexName = /\b[A-Z]/;
                         var QueryPokeNameFilterLowerCase = QueryPokeNames.charAt(0).toLowerCase() + QueryPokeNames.slice(1);
-                        console.log(QueryPokeNames.charAt(0).toUpperCase() + QueryPokeNames.slice(1))
+
 
                         var none = 0;
 
@@ -147,8 +152,8 @@
                                 pid = +i + 1;
 
                                 var idcatch = document.querySelector('.poke-id-catcher').value = [pid];
-                                console.log(json.results[i]);
-                                console.log(idcatch);
+                                // console.log(json.results[i]);
+
 
 
                                 pokeid();
@@ -156,17 +161,17 @@
                                 none++;
                                 if (none == namesLenght) {
                                     alert("Nome Incorreto");
-                                };
+                                }
                             }
 
-                        };
+                        }
                     });
             }
 
             function pokeid() {
                 var p = 1;
                 var idcatch = document.querySelector('.poke-id-catcher').value;
-                console.log(idcatch)
+
 
 
 
@@ -222,7 +227,12 @@
                         var tipos002 = Object.keys(tipos001);
                         var tiposLenght = Object.keys(tipos002).length;
                         var QueryPokeTipos = document.querySelector('.poke-tipos');
+                        var typei = [];
+                        var pic = 0;
+                        var i = 0;
+                        var jsontype2 = [];
                         QueryPokeTipos.innerHTML = "";
+
 
                         //Variaveis das Habilidades do Pokemon
                         var habilidades001 = json.abilities;
@@ -243,15 +253,23 @@
                         var pokepaged = document.getElementById('poke-moves-paginas');
                         pokepaged.innerHTML = "";
                         var pokepagedi = 1;
-                        var pokepagemax = Math.ceil( pokemovesmax / 18);
-                        pokepaged.innerHTML =+ pokepagedi + `/` + pokepagemax;
+                        var pokepagemax = Math.ceil(pokemovesmax / 18);
+                        pokepaged.innerHTML = + pokepagedi + `/` + pokepagemax;
 
                         //Funcionalidade de investigação
-                        console.log(json.stats);
+                        // console.log(json.stats);
 
                         // console.log(Object.keys(habilidadesLenght).length);
 
+                            function pokeTypePersonal(){
+                            for(i = 0; i < json.types.length; i++)
+                                
+                                typei[i] = json.types[i].type.name;
+                                
+                            }
+                            pokeTypePersonal();
 
+                            console.log(typei);
 
                         //Função que imprime todas as imagens do Pokemon
                         function imagensInput() {
@@ -288,7 +306,7 @@
                                 `" alt= "" class = "tituloImagens">`;
                             QueryPokeImagensFemale.innerHTML += `<img src="` + json.sprites.back_shiny_female +
                                 `" alt= "" class = "tituloImagens">`;
-                            `.`
+
 
 
                         }
@@ -303,29 +321,29 @@
                             //Var para chamar o nome do status json.stats[i].stat.name  
 
                             for (i = 0; i < statusLenght; i++) {
-                                var statNameNun = ""
+                                var statNameNun = "";
                                 if (i == 0) {
-                                    statNameNun = "Vida"
+                                    statNameNun = "Vida";
                                 } else if (i == 1) {
-                                    statNameNun = "Ataque"
+                                    statNameNun = "Ataque";
 
                                 } else if (i == 2) {
-                                    statNameNun = "Defesa"
+                                    statNameNun = "Defesa";
 
                                 } else if (i == 3) {
-                                    statNameNun = "Ataque Especial"
+                                    statNameNun = "Ataque Especial";
 
                                 } else if (i == 4) {
-                                    statNameNun = "Defesa Especial"
+                                    statNameNun = "Defesa Especial";
 
                                 } else if (i == 5) {
-                                    statNameNun = "Velocidade"
+                                    statNameNun = "Velocidade";
 
-                                };
+                                }
                                 QueryPokeStatus.innerHTML += `<p class = "tituloStatus">` + statNameNun + ` : ` + json.stats[i].base_stat + `</p>`;
-                            };
+                            }
 
-                            `.`
+
 
 
                         }
@@ -339,9 +357,9 @@
 
                             for (i = 0; i < habilidadesLenght; i++) {
                                 QueryPokeHabilidades.innerHTML += `<p class = "tituloAbilidades">` + json.abilities[i].ability.name;
-                            };
+                            }
 
-                            `.`
+
                         }
                         abilitiesInput();
 
@@ -351,7 +369,7 @@
 
 
                         function movesInput() {
-                           
+
                             QueryPokeMoves.textContent = '';
                             QueryPokeMoves = document.querySelector('.poke-moves');
 
@@ -361,21 +379,12 @@
 
 
                                 QueryPokeMoves.innerHTML += `<p class = "tituloMoves">` + json.moves[i].move.name;
-                               
 
 
 
-                            };
+                            }
 
-
-
-
-
-
-
-
-                        };
-
+                        }
 
 
                         movesInput();
@@ -387,7 +396,7 @@
 
 
 
-                          
+
                             pokeident = pokeident + 18;
                             if (pokeident >= pokemovesmax) {
                                 pokeident = pokeident - 18;
@@ -397,7 +406,7 @@
 
                                 pokepaged.innerHTML = '';
                                 pokepagedi = pokepagedi + 1;
-                                pokepaged.innerHTML =+ pokepagedi + `/` + pokepagemax;
+                                pokepaged.innerHTML = + pokepagedi + `/` + pokepagemax;
                                 movesInput();
                             }
                         });
@@ -405,7 +414,7 @@
                         document.querySelector("#moves-remove-id").addEventListener("click", () => {
 
 
-                            
+
                             pokeident = pokeident - 18;
                             if (pokeident < 0) {
                                 pokeident = 0;
@@ -414,7 +423,7 @@
                             } else {
                                 pokepaged.innerHTML = '';
                                 pokepagedi = pokepagedi - 1;
-                                pokepaged.innerHTML =+ pokepagedi + `/` + pokepagemax;
+                                pokepaged.innerHTML = + pokepagedi + `/` + pokepagemax;
                                 movesInput();
                             }
 
@@ -473,13 +482,12 @@
                                                                                                         (pokeTypeName == "fairy") ? "Fada" :
                                                                                                             (pokeTypeName == "unknown") ? "Desconhecido" :
                                                                                                                 (pokeTypeName == "shadow") ? "Sombrio" : '';
-                                console.log(icon);
-                                QueryPokeTipos.innerHTML += `<div class = "poke-flexer tipo-div">` + `<div class = "imgTipos ` + pokeTypeName + ` "><img class = " " src="` + icon + `">` + `</div>` + `<p class = "tituloTipos texto-` + pokeTypeName + `"> ` + pokeTypeNameTranslate + `</div>`;
+
+                                QueryPokeTipos.innerHTML += `<div class = "poke-flexer tipo-div">` + `<div class = "imgTipos ` + pokeTypeName + ` " id = "` + pokeTypeName + `"><img class = " " src="` + icon + `">` + `</div>` + `<p class = "tituloTipos texto-` + pokeTypeName + `" > ` + pokeTypeNameTranslate + `</div>`;
 
 
-                            };
+                            }
 
-                            `.`
 
 
                         }
@@ -487,17 +495,65 @@
 
 
 
+                        function pokeEfetividadeCalc() {
 
 
-                    })
-            };
+                            fetch(`https://pokeapi.co/api/v2/type/`, {
+                                method: 'GET'
+
+                            })
+                                .then(response => response.json())
+                                .then(function (json) {
+
+
+                                    function pokeapitype() {
+                                        for (i = 0; i < json.results.length; i++) {
+                                            jsontype2[i] = json.results[i].name;
+
+                                        }
+                                        for (i = 0; i < json.results.length; i++) {
+
+                                        }
+
+                                    }
+                                    pokeapitype();
+                                    console.log(typei);
+                                    console.log(jsontype2);
+                                    function pokeapitype2() {
+                                    
+                                           var foi = typei.some( ai => jsontype2.includes(ai) );
+                                           
+
+                                    
+                                           console.log(foi);
+
+
+                                           
+                                    }
+
+                                    pokeapitype2()
+
+                                   
+
+                                });
+
+
+                        }
+                        pokeEfetividadeCalc();
+
+
+
+
+                    });
+
+            }
 
             var offsetter = 0;
 
             function pokebaseadd() {
 
                 offsetter += 7;
-                console.log(offsetter);
+
 
                 pokebase();
             }
@@ -507,7 +563,7 @@
                 if (offsetter > 0) {
                     offsetter += -7;
 
-                    console.log(offsetter);
+
                     pokebase();
 
 
@@ -517,6 +573,8 @@
 
                 }
             }
+
+
 
             function pokebaseclean() {
                 offsetter = 0;
@@ -549,7 +607,7 @@
                             .then(response => response.json())
                             .then(function (json) {
 
-                                console.log(json.sprites.front_default);
+
                                 // var resutados = (json.results);
                                 var CapitalizedName = json.name.charAt(0).toUpperCase() + json.name.slice(1);
 
@@ -571,6 +629,11 @@
                 fetchPoke();
 
             }
+
+
+
+
+
 
         </script>
 </body>
