@@ -52,7 +52,7 @@
                                     <p class="poke-id"></p>
                                 </div>
                                 <div class="poke-status-item">
-                                    <h3 class="">Tipos</h3>
+                                    <h3 class="">Tipo de pokemon</h3>
                                     <p class="poke-tipos"></p>
                                 </div>
                             </div>
@@ -67,8 +67,38 @@
                     <div class="poke-status-division">
                         <div class="poke-status-item">
                             <h3>Efetividades</h3>
-                            <p class="poke-efetividade"></p>
+                            <div class="poke-status-row">
+                                <div class="poke-status-division">
+                                    <h3 class="">Recebe dobro de dano de:</h3>
+                                    <p class="poke-efetividade-ddf"></p>
+                                </div>
+                                <div class="poke-status-division">
+                                    <h3 class="">Causa dobro de dano em:</h3>
+                                    <p class="poke-efetividade-ddt"></p>
+                                </div>
+                            </div>
+                            <div class="poke-status-row">
+                                <div class="poke-status-division">
+                                    <h3 class="">Recebe metade do dano de:</h3>
+                                    <p class="poke-efetividade-hdf"></p>
+                                </div>
+                                <div class="poke-status-division">
+                                    <h3 class="">Causa  metade do dano em:</h3>
+                                    <p class="poke-efetividade-hdt"></p>
+                                </div>
+                            </div>
+                            <div class="poke-status-row">
+                                <div class="poke-status-division">
+                                    <h3 class="">Recebe nenhum dano de:</h3>
+                                    <p class="poke-efetividade-ndf"></p>
+                                </div>
+                                <div class="poke-status-division">
+                                    <h3 class="">Causa nenhum dano em:</h3>
+                                    <p class="poke-efetividade-ndt"></p>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                     <div class="poke-status-division">
                         <div class="poke-status-item">
@@ -232,6 +262,12 @@
                         var i = 0;
                         var jsontype2 = [];
                         QueryPokeTipos.innerHTML = "";
+                        document.querySelector('.poke-efetividade-ddf').innerHTML = "";
+                        document.querySelector('.poke-efetividade-ddt').innerHTML = "";
+                        document.querySelector('.poke-efetividade-hdf').innerHTML = "";
+                        document.querySelector('.poke-efetividade-hdt').innerHTML = "";
+                        document.querySelector('.poke-efetividade-ndf').innerHTML = "";
+                        document.querySelector('.poke-efetividade-ndt').innerHTML = "";
 
 
                         //Variaveis das Habilidades do Pokemon
@@ -261,15 +297,15 @@
 
                         // console.log(Object.keys(habilidadesLenght).length);
 
-                            function pokeTypePersonal(){
-                            for(i = 0; i < json.types.length; i++)
-                                
-                                typei[i] = json.types[i].type.name;
-                                
-                            }
-                            pokeTypePersonal();
+                        function pokeTypePersonal() {
+                            for (i = 0; i < json.types.length; i++)
 
-                            console.log(typei);
+                                typei[i] = json.types[i].type.name;
+
+                        }
+                        pokeTypePersonal();
+
+                        console.log(typei);
 
                         //Função que imprime todas as imagens do Pokemon
                         function imagensInput() {
@@ -505,7 +541,7 @@
                                 .then(response => response.json())
                                 .then(function (json) {
 
-
+                                    console.log(json);
                                     function pokeapitype() {
                                         for (i = 0; i < json.results.length; i++) {
                                             jsontype2[i] = json.results[i].name;
@@ -520,15 +556,48 @@
                                     console.log(typei);
                                     console.log(jsontype2);
                                     function pokeapitype2() {
-                                    
-                                           var foi = typei.some( ai => jsontype2.includes(ai) );
-                                           console.log(foi);
 
-                                        for(j = 0; j < typei.length; j++){
-                                            for(h = 0; h < jsontype2.length; h++){
-                                                if(typei[j] == jsontype2[h] ){
+                                        var foi = typei.some(ai => jsontype2.includes(ai));
+                                        console.log(foi);
+
+                                        for (j = 0; j < typei.length; j++) {
+                                            for (h = 0; h < jsontype2.length; h++) {
+                                                if (typei[j] == jsontype2[h]) {
                                                     console.log(jsontype2[h]);
                                                     console.log(h);
+                                                    fetch(`https://pokeapi.co/api/v2/type/${jsontype2[h]}`, {
+                                                        method: 'GET'
+
+                                                    }).then(response => response.json())
+                                                        .then(function (json) {
+                                                            console.log(json);
+                                                            var pokeefetividadedirectionddf = document.querySelector('.poke-efetividade-ddf');
+                                                            var pokeefetividadedirectionddt = document.querySelector('.poke-efetividade-ddt');
+                                                            var pokeefetividadedirectionhdf = document.querySelector('.poke-efetividade-hdf');
+                                                            var pokeefetividadedirectionhdt = document.querySelector('.poke-efetividade-hdt');
+                                                            var pokeefetividadedirectionndf = document.querySelector('.poke-efetividade-ndf');
+                                                            var pokeefetividadedirectionndt = document.querySelector('.poke-efetividade-ndt');
+
+
+                                                            for (k = 0; k < json.damage_relations.double_damage_from.length; k++) {
+                                                                pokeefetividadedirectionddf.innerHTML += `<p class = "" >` + json.damage_relations.double_damage_from[k].name + `</p>`;
+                                                            }
+                                                            for (l = 0; l < json.damage_relations.double_damage_to.length; l++) {
+                                                                pokeefetividadedirectionddt.innerHTML += `<p class = "" >` + json.damage_relations.double_damage_to[l].name + `</p>`;
+                                                            }
+                                                            for (z = 0; z < json.damage_relations.half_damage_from.length; z++) {
+                                                                pokeefetividadedirectionhdf.innerHTML += `<p class = "" >` + json.damage_relations.half_damage_from[z].name + `</p>`;
+                                                            }
+                                                            for (x = 0; x < json.damage_relations.half_damage_to.length; x++) {
+                                                                pokeefetividadedirectionhdt.innerHTML += `<p class = "" >` + json.damage_relations.half_damage_to[x].name + `</p>`;
+                                                            }
+                                                            for (c = 0; c < json.damage_relations.no_damage_from.length; c++) {
+                                                                pokeefetividadedirectionndf.innerHTML += `<p class = "" >` + json.damage_relations.no_damage_from[c].name + `</p>`;
+                                                            }
+                                                            for (v = 0; v < json.damage_relations.no_damage_to.length; v++) {
+                                                                pokeefetividadedirectionndt.innerHTML += `<p class = "" >` + json.damage_relations.no_damage_to[v].name + `</p>`;
+                                                            }
+                                                        });
                                                 }
 
                                             }
@@ -538,7 +607,7 @@
 
                                     pokeapitype2()
 
-                                   
+
 
                                 });
 
