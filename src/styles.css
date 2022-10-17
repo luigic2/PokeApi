@@ -30,7 +30,8 @@ input {
 
     padding: 15px;
 }
-.poke-mt-15{
+
+.poke-mt-15 {
     margin-top: 15px;
 }
 
@@ -98,13 +99,15 @@ input {
     grid-template-columns: auto auto auto;
 }
 
-.poke-tipos{
+.poke-tipos {
     margin-top: 10px;
 }
-.tipo-div{
+
+.tipo-div {
     margin-top: 7px;
 }
-.tituloTipos{
+
+.tituloTipos {
     margin-left: 7px;
     align-self: center;
 }
@@ -126,13 +129,80 @@ input {
     margin-top: 15px;
 }
 
-.poke-moves-center{
+.poke-moves-center {
     justify-content: center;
 }
 
-#poke-moves-paginas{
+#poke-moves-paginas {
     margin: 0px 10px;
 }
+
+/**/
+.poke-efetividade-ddf {
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    padding: 10px;
+    
+}
+
+.poke-efetividade-ddt {
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    padding: 10px;
+    
+}
+
+.poke-efetividade-hdf {
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    padding: 10px;
+    
+}
+
+.poke-efetividade-hdt {
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    padding: 10px;
+    
+}
+
+.poke-efetividade-ndf {
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    padding: 10px;
+    
+}
+
+.poke-efetividade-ndt {
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    padding: 10px;
+    
+}
+.img-margin > div > img{
+ margin: 15px;
+}
+.img-margin > div {
+    margin: 10px;
+   }
+   
+.text-absolute{
+    position: absolute;
+}
+.text-tipos-img{
+    margin-left: 2px;
+}
+.text-tipos-img-dd{
+    font-size: 15px;
+}
+
+.text-tipos-img-md{
+    font-size: 12px;
+}
+.text-tipos-img-nd{
+    font-size: 15px;
+}
+
 /* ------------------------------------------------Base de pokemons CSS */
 .allpoke-base {
     display: flex;
@@ -185,8 +255,8 @@ input {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
 }
 
 .imgTipos:hover {

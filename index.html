@@ -67,33 +67,39 @@
                     <div class="poke-status-division">
                         <div class="poke-status-item">
                             <h3>Efetividades</h3>
+                            <div class="">
+                                <h4 class="">Recebe:</h4>
+                                <h4 class="">Causa:</h4>
+                            </div>
                             <div class="poke-status-row">
                                 <div class="poke-status-division">
-                                    <h3 class="">Recebe dobro de dano de:</h3>
+                                    <h3 class="">Dobro de dano de:</h3>
+
                                     <p class="poke-efetividade-ddf"></p>
+
                                 </div>
                                 <div class="poke-status-division">
-                                    <h3 class="">Causa dobro de dano em:</h3>
+                                    <h3 class="">Dobro de dano em:</h3>
                                     <p class="poke-efetividade-ddt"></p>
                                 </div>
                             </div>
                             <div class="poke-status-row">
                                 <div class="poke-status-division">
-                                    <h3 class="">Recebe metade do dano de:</h3>
+                                    <h3 class="">Metade do dano de:</h3>
                                     <p class="poke-efetividade-hdf"></p>
                                 </div>
                                 <div class="poke-status-division">
-                                    <h3 class="">Causa  metade do dano em:</h3>
+                                    <h3 class="">Metade do dano em:</h3>
                                     <p class="poke-efetividade-hdt"></p>
                                 </div>
                             </div>
                             <div class="poke-status-row">
                                 <div class="poke-status-division">
-                                    <h3 class="">Recebe nenhum dano de:</h3>
+                                    <h3 class="">Nenhum dano de:</h3>
                                     <p class="poke-efetividade-ndf"></p>
                                 </div>
                                 <div class="poke-status-division">
-                                    <h3 class="">Causa nenhum dano em:</h3>
+                                    <h3 class="">Nenhum dano em:</h3>
                                     <p class="poke-efetividade-ndt"></p>
                                 </div>
                             </div>
@@ -467,7 +473,6 @@
 
 
 
-
                         function typesInput() {
 
 
@@ -519,8 +524,8 @@
                                                                                                             (pokeTypeName == "unknown") ? "Desconhecido" :
                                                                                                                 (pokeTypeName == "shadow") ? "Sombrio" : '';
 
-                                QueryPokeTipos.innerHTML += `<div class = "poke-flexer tipo-div">` + `<div class = "imgTipos ` + pokeTypeName + ` " id = "` + pokeTypeName + `"><img class = " " src="` + icon + `">` + `</div>` + `<p class = "tituloTipos texto-` + pokeTypeName + `" > ` + pokeTypeNameTranslate + `</div>`;
 
+                                QueryPokeTipos.innerHTML += `<div class = "poke-flexer tipo-div">` + `<div class = "imgTipos ` + pokeTypeName + ` " id = "` + pokeTypeName + `"><img class = " " src="` + icon + `">` + `</div>` + `<p class = "tituloTipos texto-` + pokeTypeName + `" > ` + pokeTypeNameTranslate + `</div>`;
 
                             }
 
@@ -532,7 +537,12 @@
 
 
                         function pokeEfetividadeCalc() {
-
+                            var pokeefetividadedirectionddfcont = [];
+                            var pokeefetividadedirectionddtcont = [];
+                            var pokeefetividadedirectionhdfcont = [];
+                            var pokeefetividadedirectionhdtcont = [];
+                            var pokeefetividadedirectionndfcont = [];
+                            var pokeefetividadedirectionndtcont = [];
 
                             fetch(`https://pokeapi.co/api/v2/type/`, {
                                 method: 'GET'
@@ -558,11 +568,19 @@
                                     function pokeapitype2() {
 
                                         var foi = typei.some(ai => jsontype2.includes(ai));
-                                        console.log(foi);
+                                        var n = 0;
+                                        var m = 0;
+                                        var b = 0;
+                                        var v = 0;
+                                        var c = 0;
+                                        var x = 0;
+                                        var o = 0;
+
 
                                         for (j = 0; j < typei.length; j++) {
                                             for (h = 0; h < jsontype2.length; h++) {
                                                 if (typei[j] == jsontype2[h]) {
+
                                                     console.log(jsontype2[h]);
                                                     console.log(h);
                                                     fetch(`https://pokeapi.co/api/v2/type/${jsontype2[h]}`, {
@@ -572,31 +590,64 @@
                                                         .then(function (json) {
                                                             console.log(json);
                                                             var pokeefetividadedirectionddf = document.querySelector('.poke-efetividade-ddf');
+                                                            var pokeefetividadedirectionddfcontinner = [];
                                                             var pokeefetividadedirectionddt = document.querySelector('.poke-efetividade-ddt');
+                                                            var pokeefetividadedirectionddtcontinner = [];
                                                             var pokeefetividadedirectionhdf = document.querySelector('.poke-efetividade-hdf');
+                                                            var pokeefetividadedirectionhdfcontinner = [];
                                                             var pokeefetividadedirectionhdt = document.querySelector('.poke-efetividade-hdt');
+                                                            var pokeefetividadedirectionhdtcontinner = [];
                                                             var pokeefetividadedirectionndf = document.querySelector('.poke-efetividade-ndf');
+                                                            var pokeefetividadedirectionndfcontinner = [];
                                                             var pokeefetividadedirectionndt = document.querySelector('.poke-efetividade-ndt');
+                                                            var pokeefetividadedirectionndtcontinner = [];
 
+
+                                                            console.log(n);
 
                                                             for (k = 0; k < json.damage_relations.double_damage_from.length; k++) {
-                                                                pokeefetividadedirectionddf.innerHTML += `<p class = "" >` + json.damage_relations.double_damage_from[k].name + `</p>`;
+                                                                pokeefetividadedirectionddf.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.double_damage_from[k].name + ` " id = "` + json.damage_relations.double_damage_from[k].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-dd">x2</p><img class = " " src="images/` + json.damage_relations.double_damage_from[k].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.double_damage_from[k].name + `" > ` + `</div>`;
+                                                                pokeefetividadedirectionddfcontinner[m] = json.damage_relations.double_damage_from[k].name;
+                                                                pokeefetividadedirectionddfcont[m] = pokeefetividadedirectionddfcontinner[m];
+                                                                m++;
+
                                                             }
+
+                                                            
+
                                                             for (l = 0; l < json.damage_relations.double_damage_to.length; l++) {
-                                                                pokeefetividadedirectionddt.innerHTML += `<p class = "" >` + json.damage_relations.double_damage_to[l].name + `</p>`;
+                                                                pokeefetividadedirectionddt.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.double_damage_to[l].name + ` " id = "` + json.damage_relations.double_damage_to[l].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-dd">x2</p><img class = " " src="images/` + json.damage_relations.double_damage_to[l].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.double_damage_to[l].name + `" > ` + `</div>`;
+                                                                pokeefetividadedirectionddtcontinner[b] = json.damage_relations.double_damage_to[l].name;
+                                                                pokeefetividadedirectionddtcont[b] = pokeefetividadedirectionddtcontinner[b];
+                                                                b++;
                                                             }
+                                                            
                                                             for (z = 0; z < json.damage_relations.half_damage_from.length; z++) {
-                                                                pokeefetividadedirectionhdf.innerHTML += `<p class = "" >` + json.damage_relations.half_damage_from[z].name + `</p>`;
+                                                                pokeefetividadedirectionhdf.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.half_damage_from[z].name + ` " id = "` + json.damage_relations.half_damage_from[z].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-md">x0.5</p><img class = " " src="images/` + json.damage_relations.half_damage_from[z].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.half_damage_from[z].name + `" > ` + `</div>`;
+                                                                pokeefetividadedirectionhdfcontinner[v] = json.damage_relations.half_damage_from[z].name;
+                                                                pokeefetividadedirectionhdfcont[v] = pokeefetividadedirectionhdfcontinner[v];
+                                                                v++;
                                                             }
+                                                            console.log(pokeefetividadedirectionddtcont);
                                                             for (x = 0; x < json.damage_relations.half_damage_to.length; x++) {
-                                                                pokeefetividadedirectionhdt.innerHTML += `<p class = "" >` + json.damage_relations.half_damage_to[x].name + `</p>`;
+                                                                pokeefetividadedirectionhdt.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.half_damage_to[x].name + ` " id = "` + json.damage_relations.half_damage_to[x].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-md">x0.5</p><img class = " " src="images/` + json.damage_relations.half_damage_to[x].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.half_damage_to[x].name + `" > ` + `</div>`;
+                                                                pokeefetividadedirectionhdtcontinner[c] = json.damage_relations.half_damage_to[x].name;
+                                                                pokeefetividadedirectionhdtcont[c] = pokeefetividadedirectionhdtcontinner[c];
+                                                                c++;
                                                             }
                                                             for (c = 0; c < json.damage_relations.no_damage_from.length; c++) {
-                                                                pokeefetividadedirectionndf.innerHTML += `<p class = "" >` + json.damage_relations.no_damage_from[c].name + `</p>`;
+                                                                pokeefetividadedirectionndf.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.no_damage_from[c].name + ` " id = "` + json.damage_relations.no_damage_from[c].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-nd">x0</p><img class = " " src="images/` + json.damage_relations.no_damage_from[c].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.no_damage_from[c].name + `" > ` + `</div>`;
+                                                                pokeefetividadedirectionndfcontinner[x] = json.damage_relations.no_damage_from[c].name;
+                                                                pokeefetividadedirectionndfcont[x] = pokeefetividadedirectionndfcontinner[x];
+                                                                x++;
                                                             }
                                                             for (v = 0; v < json.damage_relations.no_damage_to.length; v++) {
-                                                                pokeefetividadedirectionndt.innerHTML += `<p class = "" >` + json.damage_relations.no_damage_to[v].name + `</p>`;
+                                                                pokeefetividadedirectionndt.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.no_damage_to[v].name + ` " id = "` + json.damage_relations.no_damage_to[v].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-nd">x0</p><img class = " " src="images/` + json.damage_relations.no_damage_to[v].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.no_damage_to[v].name + `" > ` + `</div>`;
+                                                                pokeefetividadedirectionndtcontinner[o] = json.damage_relations.no_damage_to[v].name;
+                                                                pokeefetividadedirectionndtcont[o] = pokeefetividadedirectionndtcontinner[o];
+                                                                o++;
                                                             }
+                                                            n++;
                                                         });
                                                 }
 
