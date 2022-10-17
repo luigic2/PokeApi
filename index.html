@@ -608,7 +608,7 @@
                                                             for (k = 0; k < json.damage_relations.double_damage_from.length; k++) {
                                                                 if (pokeefetividadedirectionddfcont.includes(json.damage_relations.double_damage_from[k].name)) { } else {
 
-                                                                    pokeefetividadedirectionddf.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.double_damage_from[k].name + ` " id = "` + json.damage_relations.double_damage_from[k].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-dd">x2</p><img class = " " src="images/` + json.damage_relations.double_damage_from[k].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.double_damage_from[k].name + `" > ` + `</div>`;
+                                                                    pokeefetividadedirectionddf.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.double_damage_from[k].name + ` " id = "` + json.damage_relations.double_damage_from[k].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-dd ` + json.damage_relations.double_damage_from[k].name +`-ddf` +`">x2</p><img class = " " src="images/` + json.damage_relations.double_damage_from[k].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.double_damage_from[k].name + `" > ` + `</div>`;
                                                                     pokeefetividadedirectionddfcontinner[m] = json.damage_relations.double_damage_from[k].name;
                                                                     pokeefetividadedirectionddfcont[m] = pokeefetividadedirectionddfcontinner[m];
                                                                 }
@@ -622,7 +622,7 @@
                                                                 if (pokeefetividadedirectionddtcont.includes(json.damage_relations.double_damage_to[l].name)) {
 
                                                                 } else {
-                                                                    pokeefetividadedirectionddt.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.double_damage_to[l].name + ` " id = "` + json.damage_relations.double_damage_to[l].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-dd">x2</p><img class = " " src="images/` + json.damage_relations.double_damage_to[l].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.double_damage_to[l].name + `" > ` + `</div>`;
+                                                                    pokeefetividadedirectionddt.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.double_damage_to[l].name + ` " id = "` + json.damage_relations.double_damage_to[l].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-dd ` + json.damage_relations.double_damage_to[l].name +`-ddt` +`">x2</p><img class = " " src="images/` + json.damage_relations.double_damage_to[l].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.double_damage_to[l].name + `" > ` + `</div>`;
                                                                     pokeefetividadedirectionddtcontinner[b] = json.damage_relations.double_damage_to[l].name;
                                                                     pokeefetividadedirectionddtcont[b] = pokeefetividadedirectionddtcontinner[b];
                                                                 }
@@ -633,7 +633,7 @@
                                                                 if (pokeefetividadedirectionhdfcont.includes(json.damage_relations.half_damage_from[z].name)) {
 
                                                                 } else {
-                                                                    pokeefetividadedirectionhdf.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.half_damage_from[z].name + ` " id = "` + json.damage_relations.half_damage_from[z].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-md">x0.5</p><img class = " " src="images/` + json.damage_relations.half_damage_from[z].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.half_damage_from[z].name + `" > ` + `</div>`;
+                                                                    pokeefetividadedirectionhdf.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.half_damage_from[z].name + ` " id = "` + json.damage_relations.half_damage_from[z].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-md ` + json.damage_relations.half_damage_from[z].name +`-hdf` +`">x0.5</p><img class = " " src="images/` + json.damage_relations.half_damage_from[z].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.half_damage_from[z].name + `" > ` + `</div>`;
                                                                     pokeefetividadedirectionhdfcontinner[q] = json.damage_relations.half_damage_from[z].name;
                                                                     pokeefetividadedirectionhdfcont[q] = pokeefetividadedirectionhdfcontinner[q];
                                                                 }
@@ -643,9 +643,9 @@
 
                                                             for (x = 0; x < json.damage_relations.half_damage_to.length; x++) {
                                                                 if (pokeefetividadedirectionhdtcont.includes(json.damage_relations.half_damage_to[x].name)) {
-
+                                                                    
                                                                 } else {
-                                                                    pokeefetividadedirectionhdt.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.half_damage_to[x].name + ` " id = "` + json.damage_relations.half_damage_to[x].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-md">x0.5</p><img class = " " src="images/` + json.damage_relations.half_damage_to[x].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.half_damage_to[x].name + `" > ` + `</div>`;
+                                                                    pokeefetividadedirectionhdt.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.half_damage_to[x].name + ` " id = "` + json.damage_relations.half_damage_to[x].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-md ` + json.damage_relations.half_damage_to[x].name +`-hdt` +`">x0.5</p><img class = " " src="images/` + json.damage_relations.half_damage_to[x].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.half_damage_to[x].name + `" > ` + `</div>`;
                                                                     pokeefetividadedirectionhdtcontinner[w] = json.damage_relations.half_damage_to[x].name;
                                                                     pokeefetividadedirectionhdtcont[w] = pokeefetividadedirectionhdtcontinner[w];
                                                                 }
@@ -656,7 +656,7 @@
                                                                 if (pokeefetividadedirectionndfcont.includes(json.damage_relations.no_damage_from[c].name)) {
 
                                                                 } else {
-                                                                    pokeefetividadedirectionndf.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.no_damage_from[c].name + ` " id = "` + json.damage_relations.no_damage_from[c].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-nd">x0</p><img class = " " src="images/` + json.damage_relations.no_damage_from[c].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.no_damage_from[c].name + `" > ` + `</div>`;
+                                                                    pokeefetividadedirectionndf.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.no_damage_from[c].name + ` " id = "` + json.damage_relations.no_damage_from[c].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-nd ` + json.damage_relations.half_damage_to[x].name +`-i` +`">x0</p><img class = " " src="images/` + json.damage_relations.no_damage_from[c].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.no_damage_from[c].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.no_damage_from[c].name + `" > ` + `</div>`;
                                                                     pokeefetividadedirectionndfcontinner[r] = json.damage_relations.no_damage_from[c].name;
                                                                     pokeefetividadedirectionndfcont[r] = pokeefetividadedirectionndfcontinner[r];
                                                                 }
@@ -667,7 +667,7 @@
                                                                 if (pokeefetividadedirectionndtcont.includes(json.damage_relations.no_damage_to[v].name)) {
 
                                                                 } else {
-                                                                    pokeefetividadedirectionndt.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.no_damage_to[v].name + ` " id = "` + json.damage_relations.no_damage_to[v].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-nd">x0</p><img class = " " src="images/` + json.damage_relations.no_damage_to[v].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.no_damage_to[v].name + `" > ` + `</div>`;
+                                                                    pokeefetividadedirectionndt.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.no_damage_to[v].name + ` " id = "` + json.damage_relations.no_damage_to[v].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-nd ` + json.damage_relations.no_damage_to[v].name +`-i` +`">x0</p><img class = " " src="images/` + json.damage_relations.no_damage_to[v].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.no_damage_to[v].name + `" > ` + `</div>`;
                                                                     pokeefetividadedirectionndtcontinner[o] = json.damage_relations.no_damage_to[v].name;
                                                                     pokeefetividadedirectionndtcont[o] = pokeefetividadedirectionndtcontinner[o];
                                                                 }
