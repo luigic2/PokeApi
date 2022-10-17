@@ -35,6 +35,10 @@ input {
     margin-top: 15px;
 }
 
+.d-none{
+    display: none!important;
+}
+
 
 /* ------------------------------------------------Pokedex Main CSS */
 .poke-name-catcher {
@@ -190,7 +194,7 @@ input {
     position: absolute;
 }
 .text-tipos-img{
-    margin-left: 2px;
+    margin-left: 3px;
 }
 .text-tipos-img-dd{
     font-size: 15px;
@@ -198,6 +202,8 @@ input {
 
 .text-tipos-img-md{
     font-size: 12px;
+    margin-left: 3px;
+    margin-top: 2px;
 }
 .text-tipos-img-nd{
     font-size: 15px;
