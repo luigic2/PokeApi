@@ -543,19 +543,28 @@
                                                                 pokeefetividadedirectionndtcontinner[o] = json.damage_relations.no_damage_to[v].name;
                                                                 pokeefetividadedirectionndtcont[o] = pokeefetividadedirectionndtcontinner[o];
                                                                
+                                                               
 
-                                                                if (pokeefetividadedirectionhdtcont.some(item => pokeefetividadedirectionndtcont.includes(item))) { console.log(document.querySelector("." + json.damage_relations.no_damage_to[v].name + "-hdt-div").classList.add("d-none")); } 
+                                                                if (pokeefetividadedirectionhdtcont.some(item => pokeefetividadedirectionndtcont.includes(item))) { console.log(document.querySelector("." + json.damage_relations.no_damage_to[v].name + "-hdt-div").classList.add("d-none")); }
                                                                 console.log(json.damage_relations.no_damage_to[0]);
                                                                 o++;
                                                             }
                                                             n++;
 
+                                                           
+                                                          
+                                                            var concatpokeefetivity1 = pokeefetividadedirectionddfcont.concat(pokeefetividadedirectionhdfcont, pokeefetividadedirectionndfcont);
+                                                            var concatpokeefetivity2 = pokeefetividadedirectionddtcont.concat(pokeefetividadedirectionhdtcont, pokeefetividadedirectionndtcont);
+
+                                                            console.log(concatpokeefetivity1);
+                                                            console.log(concatpokeefetivity2);
 
                                                         });
 
                                                 }
 
                                             }
+                                            
                                         }
 
                                     }
