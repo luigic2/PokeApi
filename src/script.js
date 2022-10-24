@@ -108,6 +108,7 @@ function pokeid() {
             var i = 0;
             var jsontype2 = [];
             QueryPokeTipos.innerHTML = "";
+
             document.querySelector('.poke-efetividade-ddf').innerHTML = "";
             document.querySelector('.poke-efetividade-ddt').innerHTML = "";
             document.querySelector('.poke-efetividade-hdf').innerHTML = "";
@@ -271,6 +272,7 @@ function pokeid() {
             movesInput();
 
 
+            //Função que avança no pokeident para trocar para os proximos moves do pokemon
 
             document.querySelector("#moves-add-id").addEventListener("click", () => {
 
@@ -292,6 +294,8 @@ function pokeid() {
                 }
             });
 
+            //Função que regride o pokeident para retornar para os antigos moves do pokemon
+
             document.querySelector("#moves-remove-id").addEventListener("click", () => {
 
 
@@ -310,6 +314,7 @@ function pokeid() {
 
             });
 
+            //Função que gera um index de urls para svgs baseados no tipo do pokemon
 
 
             function typesInput() {
@@ -341,6 +346,8 @@ function pokeid() {
                                                                                                 (pokeTypeName == "unknown") ? "images/unknown.svg" :
                                                                                                     (pokeTypeName == "shadow") ? "images/dark.svg" : '';
 
+
+                            //Função que traduz os tipos do pokemon para português
                     var pokeTypeNameTranslate =
                         (pokeTypeName == "normal") ? "Normal" :
                             (pokeTypeName == "fighting") ? "Lutador" :
@@ -372,6 +379,7 @@ function pokeid() {
             typesInput();
 
 
+            //Função que vai gerenciar o painel de efetividades do pokemon
 
             function pokeEfetividadeCalc() {
                 var pokeefetividadedirectionddfcont = [];
@@ -591,9 +599,47 @@ function pokeid() {
                                                     ind2[any0] = pokeindentationL[any0].className;
                                                 }
 
+                                                function poketypenonefilter() {
+
+                                                    if (pokeefetividadedirectionndfcont.length == 1) {
+                                                        for (let cc1 = 0; cc1 < pokeefetividadedirectionndtcont.length; cc1++) {
+                                                            concatpokeefetivity1.push(pokeefetividadedirectionndfcont[cc1]);
+                                                        }
+                                                    }
+                                                    if (pokeefetividadedirectionndtcont.length == 1) {
+                                                        for (let cc2 = 0; cc2 < pokeefetividadedirectionndtcont.length; cc2++) {
+                                                            concatpokeefetivity2.push(pokeefetividadedirectionndtcont[cc2]);
+                                                        }
+                                                    }
+                                                    const jsonfiltered1 = jsontype2.filter(function (el) {
+                                                        return !concatpokeefetivity1.includes(el);
+                                                    });
 
 
-                                                if (n === 1) {
+
+                                                    const jsonfiltered2 = jsontype2.filter(function (el) {
+                                                        return !concatpokeefetivity2.includes(el);
+                                                    });
+
+
+                                                  
+                                                    for (let con = 0; con < jsonfiltered1.length; con++) {
+                                                        if (jsonfiltered1[con] == "unknown" || jsonfiltered1[con] == "shadow" ){} else{
+                                                            document.querySelector(".poke-efetividade-df").innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + jsonfiltered1[con] + ` " id = "` + jsonfiltered1[con] + `"><p class = "text-absolute text-tipos-img text-tipos-img-nd ` + jsonfiltered1[con] + `-i` + `">x0</p><img class = " " src="images/` + jsonfiltered1[con] + `.svg">` + `</div>` + `</div>`;
+                                                        }
+                                                        }
+                                                    for (let con2 = 0; con2 < jsonfiltered2.length; con2++) {
+                                                        if (jsonfiltered2[con2] == "unknown" || jsonfiltered2[con2] == "shadow"  ){} else{
+                                                        document.querySelector(".poke-efetividade-dt").innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + jsonfiltered2[con2] + ` " id = "` + jsonfiltered2[con2] + `"><p class = "text-absolute text-tipos-img text-tipos-img-nd ` + jsonfiltered2[con2] + `-i` + `">x0</p><img class = " " src="images/` + jsonfiltered2[con2] + `.svg">` + `</div>` + `</div>`;
+                                                        }
+                                                    }
+                                                }
+                                                console.log("------");
+                                              console.log(typei.length);
+
+                                              console.log("------");
+
+                                                if (n === 1 || typei.length == 1) {
 
                                                     console.log("Todos da esquerda (mesmo invisivel)");
                                                     console.log(concatpokeefetivity1);
@@ -664,43 +710,10 @@ function pokeid() {
 
                                                     typednonefilteringf();
                                                     typednonefilteringf();
-                                                    function poketypenonefilter() {
-
-                                                        if (pokeefetividadedirectionndfcont.length == 1) {
-                                                            for (let cc1 = 0; cc1 < pokeefetividadedirectionndtcont.length; cc1++) {
-                                                                concatpokeefetivity1.push(pokeefetividadedirectionndfcont[cc1]);
-                                                            }
-                                                        }
-                                                        if (pokeefetividadedirectionndtcont.length == 1) {
-                                                            for (let cc2 = 0; cc2 < pokeefetividadedirectionndtcont.length; cc2++) {
-                                                                concatpokeefetivity2.push(pokeefetividadedirectionndtcont[cc2]);
-                                                            }
-                                                        }
-                                                        const jsonfiltered1 = jsontype2.filter(function (el) {
-                                                            return !concatpokeefetivity1.includes(el);
-                                                        });
-
-
-
-                                                        const jsonfiltered2 = jsontype2.filter(function (el) {
-                                                            return !concatpokeefetivity2.includes(el);
-                                                        });
-
-
-                                                      
-                                                        for (let con = 0; con < jsonfiltered1.length; con++) {
-                                                            if (jsonfiltered1[con] == "unknown" || jsonfiltered1[con] == "shadow" ){} else{
-                                                                document.querySelector(".poke-efetividade-df").innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + jsonfiltered1[con] + ` " id = "` + jsonfiltered1[con] + `"><p class = "text-absolute text-tipos-img text-tipos-img-nd ` + jsonfiltered1[con] + `-i` + `">x0</p><img class = " " src="images/` + jsonfiltered1[con] + `.svg">` + `</div>` + `</div>`;
-                                                            }
-                                                            }
-                                                        for (let con2 = 0; con2 < jsonfiltered2.length; con2++) {
-                                                            if (jsonfiltered2[con2] == "unknown" || jsonfiltered2[con2] == "shadow"  ){} else{
-                                                            document.querySelector(".poke-efetividade-dt").innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + jsonfiltered2[con2] + ` " id = "` + jsonfiltered2[con2] + `"><p class = "text-absolute text-tipos-img text-tipos-img-nd ` + jsonfiltered2[con2] + `-i` + `">x0</p><img class = " " src="images/` + jsonfiltered2[con2] + `.svg">` + `</div>` + `</div>`;
-                                                            }
-                                                        }
-                                                    }
+                                                   
                                                     poketypenonefilter();
                                                 }
+                                                
 
                                                 console.log(concatpokeefetivity2);
                                                 console.log(concatpokeefetivity1);
