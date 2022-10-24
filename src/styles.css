@@ -212,6 +212,10 @@ input {
     font-size: 15px;
 }
 
+.text-tipos-img-d{
+    margin-left: 4px;
+
+}
 .text-tipos-img-md{
     font-size: 12px;
     margin-left: 3px;
@@ -220,6 +224,7 @@ input {
 .text-tipos-img-nd{
     font-size: 15px;
 }
+
 
 /* ------------------------------------------------Base de pokemons CSS */
 .allpoke-base {

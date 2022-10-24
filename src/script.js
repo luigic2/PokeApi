@@ -347,7 +347,7 @@ function pokeid() {
                                                                                                     (pokeTypeName == "shadow") ? "images/dark.svg" : '';
 
 
-                            //Função que traduz os tipos do pokemon para português
+                    //Função que traduz os tipos do pokemon para português
                     var pokeTypeNameTranslate =
                         (pokeTypeName == "normal") ? "Normal" :
                             (pokeTypeName == "fighting") ? "Lutador" :
@@ -397,6 +397,7 @@ function pokeid() {
                     .then(function (json) {
 
                         console.log(json);
+                        //funçã que adicionar todos os tipos elementais de pokemons em um array (jsontype2)
                         function pokeapitype() {
                             for (i = 0; i < json.results.length; i++) {
                                 jsontype2[i] = json.results[i].name;
@@ -415,6 +416,7 @@ function pokeid() {
 
                         function pokeapitype2() {
 
+                            //Variaveis que vão ser manipuladas mais pra frente (principalmente nas indentações das efetividades)
                             var foi = typei.some(ai => jsontype2.includes(ai));
                             var n = 0;
                             var m = 0;
@@ -425,18 +427,22 @@ function pokeid() {
                             var o = 0;
                             var con = 0;
 
+                            //Identação dos tipos elementais do pokemon selecionado
                             for (j = 0; j < typei.length; j++) {
                                 for (h = 0; h < jsontype2.length; h++) {
                                     if (typei[j] == jsontype2[h]) {
 
                                         console.log(jsontype2[h]);
                                         console.log(h);
+                                        //Fetch da seção de tipos de pokemon
                                         fetch(`https://pokeapi.co/api/v2/type/${jsontype2[h]}`, {
                                             method: 'GET'
 
                                         }).then(response => response.json())
                                             .then(function (json) {
                                                 console.log(json);
+
+                                                //Variaveis que vão ser usadas (criação de arrays e seleção do html que vai ser manipulado)
                                                 var pokeefetividadedirectionddf = document.querySelector('.poke-efetividade-ddf');
                                                 var pokeefetividadedirectionddfcontinner = [];
                                                 var pokeefetividadedirectionddt = document.querySelector('.poke-efetividade-ddt');
@@ -455,6 +461,7 @@ function pokeid() {
 
 
 
+                                                //For que imprime os supereffetivos da esquerda
 
                                                 for (k = 0; k < json.damage_relations.double_damage_from.length; k++) {
                                                     if (pokeefetividadedirectionndfcont.includes(json.damage_relations.double_damage_from[k].name)) { } else {
@@ -468,6 +475,7 @@ function pokeid() {
                                                     }
                                                 }
 
+                                                //For que imprime os supereffetivos da direita
 
                                                 for (l = 0; l < json.damage_relations.double_damage_to.length; l++) {
                                                     if (pokeefetividadedirectionndtcont.includes(json.damage_relations.double_damage_to[l].name)) { } else {
@@ -481,6 +489,7 @@ function pokeid() {
                                                         }
                                                     }
                                                 }
+                                                //For que imprime os pouco effetivos da esquerda
 
                                                 for (z = 0; z < json.damage_relations.half_damage_from.length; z++) {
                                                     if (pokeefetividadedirectionndfcont.includes(json.damage_relations.half_damage_from[z].name)) { } else {
@@ -505,6 +514,7 @@ function pokeid() {
 
                                                 }
 
+                                                //For que imprime os pouco effetivos da direita
 
                                                 for (x = 0; x < json.damage_relations.half_damage_to.length; x++) {
 
@@ -530,6 +540,9 @@ function pokeid() {
                                                 }
 
 
+                                                //for que verifica os valores que são iguais entre o não effetivo e o pouco effetivo e faz os iguais sumirem
+
+
                                                 for (c = 0; c < json.damage_relations.no_damage_from.length; c++) {
 
                                                     pokeefetividadedirectionndf.innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + json.damage_relations.no_damage_from[c].name + ` " id = "` + json.damage_relations.no_damage_from[c].name + `"><p class = "text-absolute text-tipos-img text-tipos-img-nd ` + json.damage_relations.no_damage_from[c].name + `-i` + `">x0</p><img class = " " src="images/` + json.damage_relations.no_damage_from[c].name + `.svg">` + `</div>` + `</div>`;
@@ -541,6 +554,7 @@ function pokeid() {
 
                                                 }
 
+                                                //for que verifica os valores que são iguais entre o pouco effetivo e super effetivo e faz os iguais sumirem
 
                                                 for (v = 0; v < json.damage_relations.no_damage_to.length; v++) {
 
@@ -553,7 +567,7 @@ function pokeid() {
                                                     o++;
                                                 }
 
-
+                                                //for que verifica os valores que são iguais entre o pouco effetivo e super effetivo e faz os iguais sumirem
                                                 for (ve = 0; ve < 20; ve++) {
 
 
@@ -573,7 +587,7 @@ function pokeid() {
 
 
 
-
+                                                //Variaveis concatenando todos os tipos elementais que estão aparecendo na tela (fora o nulo e o normal)
                                                 var concatpokeefetivity1 = pokeefetividadedirectionddfcont.concat(pokeefetividadedirectionhdfcont, pokeefetividadedirectionndfcont);
                                                 var concatpokeefetivity2 = pokeefetividadedirectionddtcont.concat(pokeefetividadedirectionhdtcont, pokeefetividadedirectionndtcont);
 
@@ -585,12 +599,13 @@ function pokeid() {
                                                 var ind = [];
                                                 var ind2 = [];
                                                 // console.log(document.querySelectorAll(".d-none")[0].className);
+
+                                                // Variaveis pegando os valores que estão invisiveis na seção de supereffetividade e pouca efetividade
                                                 var pokeindentationL = document.querySelectorAll(".d-none.ddf,.d-none.hdf");
 
                                                 var pokeindentationR = document.querySelectorAll(".d-none.ddt,.d-none.hdt");
 
-                                                console.log(pokeindentationR);
-
+                                                // For colocando esses valores dentro do ind
                                                 for (any = 0; any < pokeindentationR.length; any++) {
                                                     ind[any] = pokeindentationR[any].className;
                                                 }
@@ -601,44 +616,53 @@ function pokeid() {
 
                                                 function poketypenonefilter() {
 
+                                                    //Indentação coloca os tipos com effetividade nula de maneira adequada dentro do array das effetividades que estão aparecendo na tabela (fora o normal) na parte esquerda
                                                     if (pokeefetividadedirectionndfcont.length == 1) {
                                                         for (let cc1 = 0; cc1 < pokeefetividadedirectionndtcont.length; cc1++) {
                                                             concatpokeefetivity1.push(pokeefetividadedirectionndfcont[cc1]);
                                                         }
                                                     }
+                                                    //Indentação coloca os tipos com effetividade nula de maneira adequada dentro do array das effetividades que estão aparecendo na tabela (fora o normal) na parte direita
+
                                                     if (pokeefetividadedirectionndtcont.length == 1) {
                                                         for (let cc2 = 0; cc2 < pokeefetividadedirectionndtcont.length; cc2++) {
                                                             concatpokeefetivity2.push(pokeefetividadedirectionndtcont[cc2]);
                                                         }
                                                     }
+                                                    //constante que pega todos os tipos elementais que ainda não estão aparecendo na parte esquerda tabela 
+
                                                     const jsonfiltered1 = jsontype2.filter(function (el) {
                                                         return !concatpokeefetivity1.includes(el);
                                                     });
 
 
+                                                    //constante que pega todos os tipos elementais que ainda não estão aparecendo na parte direita tabela 
 
                                                     const jsonfiltered2 = jsontype2.filter(function (el) {
                                                         return !concatpokeefetivity2.includes(el);
                                                     });
 
 
-                                                  
+                                                    // Identação que imprime a effetividade normal na parte esquerda da tabela 
                                                     for (let con = 0; con < jsonfiltered1.length; con++) {
-                                                        if (jsonfiltered1[con] == "unknown" || jsonfiltered1[con] == "shadow" ){} else{
-                                                            document.querySelector(".poke-efetividade-df").innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + jsonfiltered1[con] + ` " id = "` + jsonfiltered1[con] + `"><p class = "text-absolute text-tipos-img text-tipos-img-nd ` + jsonfiltered1[con] + `-i` + `">x0</p><img class = " " src="images/` + jsonfiltered1[con] + `.svg">` + `</div>` + `</div>`;
+                                                        // if retira a effetividade de unknown e shadow 
+
+                                                        if (jsonfiltered1[con] == "unknown" || jsonfiltered1[con] == "shadow") { } else {
+                                                            document.querySelector(".poke-efetividade-df").innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + jsonfiltered1[con] + ` " id = "` + jsonfiltered1[con] + `"><p class = "text-absolute text-tipos-img text-tipos-img-d ` + jsonfiltered1[con] + `-i` + `">x1</p><img class = " " src="images/` + jsonfiltered1[con] + `.svg">` + `</div>` + `</div>`;
                                                         }
-                                                        }
+                                                    }
+                                                    // Identação que imprime a effetividade normal na parte esquerda da tabela
+
                                                     for (let con2 = 0; con2 < jsonfiltered2.length; con2++) {
-                                                        if (jsonfiltered2[con2] == "unknown" || jsonfiltered2[con2] == "shadow"  ){} else{
-                                                        document.querySelector(".poke-efetividade-dt").innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + jsonfiltered2[con2] + ` " id = "` + jsonfiltered2[con2] + `"><p class = "text-absolute text-tipos-img text-tipos-img-nd ` + jsonfiltered2[con2] + `-i` + `">x0</p><img class = " " src="images/` + jsonfiltered2[con2] + `.svg">` + `</div>` + `</div>`;
+                                                        // if retira a effetividade de unknown e shadow 
+
+                                                        if (jsonfiltered2[con2] == "unknown" || jsonfiltered2[con2] == "shadow") { } else {
+                                                            document.querySelector(".poke-efetividade-dt").innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + jsonfiltered2[con2] + ` " id = "` + jsonfiltered2[con2] + `"><p class = "text-absolute text-tipos-img text-tipos-img-d ` + jsonfiltered2[con2] + `-i` + `">x1</p><img class = " " src="images/` + jsonfiltered2[con2] + `.svg">` + `</div>` + `</div>`;
                                                         }
                                                     }
                                                 }
-                                                console.log("------");
-                                              console.log(typei.length);
 
-                                              console.log("------");
-
+                                                // If que filtra se o pokemon está na ultima indentação dos tipos elementais dele  
                                                 if (n === 1 || typei.length == 1) {
 
                                                     console.log("Todos da esquerda (mesmo invisivel)");
@@ -686,6 +710,7 @@ function pokeid() {
                                                     typednonefilteringt();
                                                     typednonefilteringt();
 
+                                                    //Filtragem de sem effetividade
                                                     function typednonefilteringf() {
                                                         for (any3 = 0; any3 < indentatorpoke2.length; any3++) {
 
@@ -710,45 +735,16 @@ function pokeid() {
 
                                                     typednonefilteringf();
                                                     typednonefilteringf();
-                                                   
+
                                                     poketypenonefilter();
                                                 }
-                                                
 
-                                                console.log(concatpokeefetivity2);
-                                                console.log(concatpokeefetivity1);
 
+                                               
 
 
 
-
-                                                // console.log(ind);
-
-                                                // var efetest = pokeefetividadedirectionhdtcont;
-
-                                                // indexpoketype = efetest.indexOf('steel');
-                                                // console.log(indexpoketype);
-                                                // if( indexpoketype > -1){
-                                                //     efetest.splice(indexpoketype, 1);
-                                                // }
-                                                // efetest = efetest.filter(function(n){return n; }); 
-                                                // console.log("-");
-
-                                                // console.log(efetest);
-                                                // console.log("-");
-
-                                                // for (alltypes = 0; altypes < 19; alltypes++) {
-
-                                                //     // if () { } else {
-                                                //     //     if (||) { } else {
-
-
-
-
-                                                //     //     }
-                                                //     // }
-
-                                                // }
+                                           
 
                                                 n++;
                                             });
