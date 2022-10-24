@@ -114,6 +114,9 @@ function pokeid() {
             document.querySelector('.poke-efetividade-hdt').innerHTML = "";
             document.querySelector('.poke-efetividade-ndf').innerHTML = "";
             document.querySelector('.poke-efetividade-ndt').innerHTML = "";
+            document.querySelector(".poke-efetividade-df").innerHTML = "";
+            document.querySelector(".poke-efetividade-dt").innerHTML = "";
+
 
 
             //Variaveis das Habilidades do Pokemon
@@ -398,7 +401,10 @@ function pokeid() {
                         }
                         pokeapitype();
                         console.log(typei);
+
                         console.log(jsontype2);
+
+
                         function pokeapitype2() {
 
                             var foi = typei.some(ai => jsontype2.includes(ai));
@@ -409,7 +415,7 @@ function pokeid() {
                             var w = 0;
                             var r = 0;
                             var o = 0;
-
+                            var con = 0;
 
                             for (j = 0; j < typei.length; j++) {
                                 for (h = 0; h < jsontype2.length; h++) {
@@ -541,16 +547,16 @@ function pokeid() {
 
 
                                                 for (ve = 0; ve < 20; ve++) {
-                                                   
-                                                   
-                                                   if(pokeefetividadedirectionhdfcont.includes(pokeefetividadedirectionddfcont[ve])){
-                                                    console.log("__________________/_-____________")
-                                                    console.log(pokeefetividadedirectionddfcont[ve]);
-                                                    console.log("__________________/_-____________")
-                                                    document.querySelector("." + pokeefetividadedirectionddfcont[ve] + "-ddf-div" ).classList.add("d-none");
-                                                    document.querySelector("." + pokeefetividadedirectionddfcont[ve] + "-hdf-div" ).classList.add("d-none");
 
-                                                   }
+
+                                                    if (pokeefetividadedirectionhdfcont.includes(pokeefetividadedirectionddfcont[ve])) {
+                                                        console.log("__________________/_-____________")
+                                                        console.log(pokeefetividadedirectionddfcont[ve]);
+                                                        console.log("__________________/_-____________")
+                                                        document.querySelector("." + pokeefetividadedirectionddfcont[ve] + "-ddf-div").classList.add("d-none");
+                                                        document.querySelector("." + pokeefetividadedirectionddfcont[ve] + "-hdf-div").classList.add("d-none");
+
+                                                    }
 
                                                 }
 
@@ -562,7 +568,7 @@ function pokeid() {
 
                                                 var concatpokeefetivity1 = pokeefetividadedirectionddfcont.concat(pokeefetividadedirectionhdfcont, pokeefetividadedirectionndfcont);
                                                 var concatpokeefetivity2 = pokeefetividadedirectionddtcont.concat(pokeefetividadedirectionhdtcont, pokeefetividadedirectionndtcont);
-                                                
+
 
 
                                                 var efetest = concatpokeefetivity2;
@@ -655,16 +661,52 @@ function pokeid() {
 
                                                         }
                                                     }
+
                                                     typednonefilteringf();
                                                     typednonefilteringf();
+                                                    function poketypenonefilter() {
+
+                                                        if (pokeefetividadedirectionndfcont.length == 1) {
+                                                            for (let cc1 = 0; cc1 < pokeefetividadedirectionndtcont.length; cc1++) {
+                                                                concatpokeefetivity1.push(pokeefetividadedirectionndfcont[cc1]);
+                                                            }
+                                                        }
+                                                        if (pokeefetividadedirectionndtcont.length == 1) {
+                                                            for (let cc2 = 0; cc2 < pokeefetividadedirectionndtcont.length; cc2++) {
+                                                                concatpokeefetivity2.push(pokeefetividadedirectionndtcont[cc2]);
+                                                            }
+                                                        }
+                                                        const jsonfiltered1 = jsontype2.filter(function (el) {
+                                                            return !concatpokeefetivity1.includes(el);
+                                                        });
+
+
+
+                                                        const jsonfiltered2 = jsontype2.filter(function (el) {
+                                                            return !concatpokeefetivity2.includes(el);
+                                                        });
+
+
+                                                      
+                                                        for (let con = 0; con < jsonfiltered1.length; con++) {
+                                                            if (jsonfiltered1[con] == "unknown" || jsonfiltered1[con] == "shadow" ){} else{
+                                                                document.querySelector(".poke-efetividade-df").innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + jsonfiltered1[con] + ` " id = "` + jsonfiltered1[con] + `"><p class = "text-absolute text-tipos-img text-tipos-img-nd ` + jsonfiltered1[con] + `-i` + `">x0</p><img class = " " src="images/` + jsonfiltered1[con] + `.svg">` + `</div>` + `</div>`;
+                                                            }
+                                                            }
+                                                        for (let con2 = 0; con2 < jsonfiltered2.length; con2++) {
+                                                            if (jsonfiltered2[con2] == "unknown" || jsonfiltered2[con2] == "shadow"  ){} else{
+                                                            document.querySelector(".poke-efetividade-dt").innerHTML += `<div class = "poke-flexer img-margin tipo-div">` + `<div class = "imgTipos ` + jsonfiltered2[con2] + ` " id = "` + jsonfiltered2[con2] + `"><p class = "text-absolute text-tipos-img text-tipos-img-nd ` + jsonfiltered2[con2] + `-i` + `">x0</p><img class = " " src="images/` + jsonfiltered2[con2] + `.svg">` + `</div>` + `</div>`;
+                                                            }
+                                                        }
+                                                    }
+                                                    poketypenonefilter();
                                                 }
+
                                                 console.log(concatpokeefetivity2);
                                                 console.log(concatpokeefetivity1);
 
 
-                                                // for(con = 0; con <= concatpokeefetivity1; con++){
-                                                //     document.getElementsByClassName()
-                                                // }
+
 
 
                                                 // console.log(ind);
