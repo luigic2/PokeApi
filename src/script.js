@@ -6,8 +6,8 @@ var pb = 0;
 function pokename() {
     fetch('https://pokeapi.co/api/v2/pokemon/?limit=1126', {
         method: 'GET'
-
     })
+
         .then(response => response.json())
         .then(function (json) {
 
@@ -21,7 +21,6 @@ function pokename() {
 
 
             var none = 0;
-
             for (i = 0; i < namesLenght; i++) {
                 // console.log(json.results[i].name);
                 // console.log(i);
@@ -189,9 +188,6 @@ function pokeid() {
                     `" alt= "" class = "tituloImagens">`;
                 QueryPokeImagensFemale.innerHTML += `<img src="` + json.sprites.back_shiny_female +
                     `" alt= "" class = "tituloImagens">`;
-
-
-
             }
             imagensInput();
 
@@ -248,9 +244,8 @@ function pokeid() {
 
 
 
+
             //Função que imprime todas os Moves do Pokemon
-
-
             function movesInput() {
 
                 QueryPokeMoves.textContent = '';
@@ -369,10 +364,8 @@ function pokeid() {
                     QueryPokeTipos.innerHTML += `<div class = "poke-flexer tipo-div">` + `<div class = "imgTipos ` + pokeTypeName + ` " id = "` + pokeTypeName + `"><img class = " " src="` + icon + `">` + `</div>` + `<p class = "tituloTipos texto-` + pokeTypeName + `" > ` + pokeTypeNameTranslate + `</div>`;
 
                 }
-
-
-
             }
+
             typesInput();
 
 
@@ -480,6 +473,8 @@ function pokeid() {
                                                         if (pokeefetividadedirectionhdfcont.includes(json.damage_relations.half_damage_from[z].name)) {
                                                             document.querySelector("." + json.damage_relations.half_damage_from[z].name + '-hdf').innerHTML = "1/4";
                                                         } else if (pokeefetividadedirectionddfcont.includes(json.damage_relations.half_damage_from[z].name)) {
+                                                            console.log("-----------");
+                                                            console.log(json.damage_relations.half_damage_from);
 
                                                             document.querySelector("." + json.damage_relations.half_damage_from[z].name + '-ddf-div').classList.add("d-none");
                                                             pokeefetividadedirectionhdf.innerHTML += `<div class = "poke-flexer img-margin tipo-div d-none  ` + json.damage_relations.half_damage_from[z].name + "-hdf-div hdf" + ` ">` + `<div class = "imgTipos ` + json.damage_relations.half_damage_from[z].name + ` " id = "` + json.damage_relations.half_damage_from[z].name + `"><p class = "text-absolute  text-tipos-img-md ` + json.damage_relations.half_damage_from[z].name + `-hdf` + `">1/2</p><img class = " " src="images/` + json.damage_relations.half_damage_from[z].name + `.svg">` + `</div>` + `<p class = "tituloTipos texto-` + json.damage_relations.half_damage_from[z].name + `" > ` + `</div>`;
@@ -540,18 +535,34 @@ function pokeid() {
                                                     pokeefetividadedirectionndtcont[o] = pokeefetividadedirectionndtcontinner[o];
 
 
-                                                    if (pokeefetividadedirectionhdtcont.some(item => pokeefetividadedirectionndtcont.includes(item))) { } else { console.log("n foi"); }
-
                                                     if (pokeefetividadedirectionhdtcont.some(item => pokeefetividadedirectionndtcont.includes(item))) { document.querySelector("." + json.damage_relations.no_damage_to[v].name + "-hdt-div").classList.add("d-none"); }
                                                     o++;
                                                 }
+
+
+                                                for (ve = 0; ve < 20; ve++) {
+                                                   
+                                                   
+                                                   if(pokeefetividadedirectionhdfcont.includes(pokeefetividadedirectionddfcont[ve])){
+                                                    console.log("__________________/_-____________")
+                                                    console.log(pokeefetividadedirectionddfcont[ve]);
+                                                    console.log("__________________/_-____________")
+                                                    document.querySelector("." + pokeefetividadedirectionddfcont[ve] + "-ddf-div" ).classList.add("d-none");
+                                                    document.querySelector("." + pokeefetividadedirectionddfcont[ve] + "-hdf-div" ).classList.add("d-none");
+
+                                                   }
+
+                                                }
+
+
+
 
 
 
 
                                                 var concatpokeefetivity1 = pokeefetividadedirectionddfcont.concat(pokeefetividadedirectionhdfcont, pokeefetividadedirectionndfcont);
                                                 var concatpokeefetivity2 = pokeefetividadedirectionddtcont.concat(pokeefetividadedirectionhdtcont, pokeefetividadedirectionndtcont);
-
+                                                
 
 
                                                 var efetest = concatpokeefetivity2;
@@ -569,7 +580,7 @@ function pokeid() {
                                                 for (any = 0; any < pokeindentationR.length; any++) {
                                                     ind[any] = pokeindentationR[any].className;
                                                 }
-                                                
+
                                                 for (any0 = 0; any0 < pokeindentationL.length; any0++) {
                                                     ind2[any0] = pokeindentationL[any0].className;
                                                 }
@@ -649,6 +660,11 @@ function pokeid() {
                                                 }
                                                 console.log(concatpokeefetivity2);
                                                 console.log(concatpokeefetivity1);
+
+
+                                                // for(con = 0; con <= concatpokeefetivity1; con++){
+                                                //     document.getElementsByClassName()
+                                                // }
 
 
                                                 // console.log(ind);
